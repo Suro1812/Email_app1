@@ -1,0 +1,23 @@
+{
+  "agent": "reply",
+  "message_id": null,
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "Draft a reply for the following Gmail conversation in plain text only. Use only the thread messages below to understand the conversation history. The thread messages are chronological; the newest thread message is the current/latest email. Mentally convert them into: Current message with sender/content, then Previous messages as numbered datetime | sender | action lines. Use Summary_JSON as helpful context only, but prefer the actual message/thread if they differ. Follow User_reply_intent closely; if the intent is empty, draft a neutral helpful reply that fits the latest/current message. Respond to the latest sender and latest ask, while respecting dates, cancellations, scheduling context, and earlier thread details. Do not invent availability, promises, attachments, payments, project details, or facts. If information is missing, ask a concise clarification instead of making it up. Return only the reply body. Do not return JSON, labels, reasoning, markdown, or tool calls.\n\nFrom: a@b.com\nTo: \nSubject: \nEMAIL_THREAD_START\nThread message 1\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes.\nEMAIL_THREAD_END\nUser_reply_intent: Say I will review it today.\nConversation_summary: ",
+    "thread_messages": "Thread message 1\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes.",
+    "raw_thread_messages": [
+      {
+        "datetime": "",
+        "sender": "a@b.com",
+        "body": "Please review the attached notes."
+      }
+    ],
+    "user_reply_intent": "Say I will review it today.",
+    "conversation_summary": ""
+  },
+  "output": {
+    "suggested_reply": "Thanks, I will review this.",
+    "tone": "professional",
+    "confidence": 0.7
+  }
+}

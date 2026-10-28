@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f2afd8fb3d12c8",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: PES University <mail@timesjobs.com>\nTo: surojitdutta1812@gmail.com\nDate: Sat, 4 Jul 2026 07:56:45 +0530 (IST)\nSubject: <external_source>Your application has been considered for the M.Tech Data Science and AI</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 4 Jul 2026 07:56 AM\nsender: PES University\ncontent: <external_source>M.Tech in Data Science and Artificial Intelligence View this mailer in Browser You are receiving this email as you are a registered user of TimesJobs.com Not interested in newsletters anymore? Manage Subscription.</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 4 Jul 2026 07:56 AM\nsender: PES University\ncontent: <external_source>M.Tech in Data Science and Artificial Intelligence View this mailer in Browser You are receiving this email as you are a registered user of TimesJobs.com Not interested in newsletters anymore? Manage Subscription.</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Sat, 4 Jul 2026 07:56:45 +0530 (IST)",
+        "sender": "PES University <mail@timesjobs.com>",
+        "body": "<external_source>M.Tech in Data Science and Artificial Intelligence View this mailer in Browser You are receiving this email as you are a registered user of TimesJobs.com Not interested in newsletters anymore? Manage Subscription.</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From PES University, 4 Jul 2026 at 07:56 AM (IST): The sender is notifying the recipient that their application for the M.Tech program in Data Science and Artificial Intelligence has been considered. This notification was sent via TimesJobs.com as part of a registered user communication regarding job or course applications."
+  }
+}

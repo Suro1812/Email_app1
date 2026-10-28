@@ -1,0 +1,64 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19f28380b04cfb3b"
+  ],
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-03T13:43:26\n\nMessage 1\nDate: Fri, 3 Jul 2026 19:12:57 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Re: Order Number: two</external_source>\nMessage_body: <external_source>Dear Support Team, I am following up on my previous email regarding the delayed delivery of my order. Unfortunately, I have not yet received any update from your team. It has now been over two weeks since I placed the order, and the tracking status still has not changed. This delay is causing significant inconvenience, as I needed the product by last week. Could you please provide a clear update on the current status of my shipment? If the package has been lost or cannot be delivered within the next few days, I would appreciate it if you could initiate the refund process immediately. I would be grateful if someone from your support team could respond as soon as possible with a resolution. Thank you for your attention to this matter. Kind regards, Rahul Verma On Fri, 3 Jul 2026 at 19:12, Surojit D wrote: &gt; Dear Support Team, &gt; &gt; I placed my order nearly two weeks ago, but it has still not been &gt; delivered. &gt; &gt; The tracking information has not been updated for the past five days, and &gt; I have been unable to reach customer support. &gt; &gt; Could you please investigate the delay and let me know when I can expect &gt; delivery? &gt; &gt; If the shipment cannot be delivered soon, I would like to request a refund. &gt; &gt; Thank you. &gt; &gt; Regards, &gt; Rahul Verma &gt;</external_source>\nStructured_thread: Current message:\ndatetime: 3 Jul 2026 07:12 PM\nsender: Surojit D\ncontent: <external_source>Dear Support Team, I am following up on my previous email regarding the delayed delivery of my order. Unfortunately, I have not yet received any update from your team. It has now been over two weeks since I placed the order, and the tracking status still has not changed. This delay is causing significant inconvenience, as I needed the product by last week. Could you please provide a clear update on the current status of my shipment? If the package has been lost or cannot be delivered within the next few days, I would appreciate it if you could initiate the refund process immediately. I would be grateful if someone from your support team could respond as soon as possible with a resolution. Thank you for your attention to this matter. Kind regards, Rahul Verma On Fri, 3 Jul 2026 at 19:12, Surojit D wrote: &gt; Dear Support Team, &gt; &gt; I placed my order nearly two weeks ago, but it has still not been &gt; delivered. &gt; &gt; The tracking information has not been updated for the past five days, and &gt; I have been unable to reach customer support. &gt; &gt; Could you please investigate the delay and let me know when I can expect &gt; delivery? &gt; &gt; If the shipment cannot be delivered soon, I would like to request a refund. &gt; &gt; Thank you. &gt; &gt; Regards, &gt; Rahul Verma &gt;</external_source>\n\nPrevious message 1:\ndatetime: 3 Jul 2026 07:12 PM\nsender: Surojit D\ncontent: <external_source>Dear Support Team, I placed my order nearly two weeks ago, but it has still not been delivered. The tracking information has not been updated for the past five days, and I have been unable to reach customer support. Could you please investigate the delay and let me know when I can expect delivery? If the shipment cannot be delivered soon, I would like to request a refund. Thank you. Regards, Rahul Verma</external_source>\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19f28380b04cfb3b",
+        "thread_id": "19f28376e62ad267",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "subject": "<external_source>Re: Order Number: two</external_source>",
+        "date": "Fri, 3 Jul 2026 19:12:57 +0530",
+        "snippet": "<external_source>Dear Support Team, I am following up on my previous email regarding the delayed delivery of my order. Unfortunately, I have not yet received any update from your team. It has now been over two weeks</external_source>",
+        "body": "<external_source>Dear Support Team, I am following up on my previous email regarding the delayed delivery of my order. Unfortunately, I have not yet received any update from your team. It has now been over two weeks since I placed the order, and the tracking status still has not changed. This delay is causing significant inconvenience, as I needed the product by last week. Could you please provide a clear update on the current status of my shipment? If the package has been lost or cannot be delivered within the next few days, I would appreciate it if you could initiate the refund process immediately. I would be grateful if someone from your support team could respond as soon as possible with a resolution. Thank you for your attention to this matter. Kind regards, Rahul Verma On Fri, 3 Jul 2026 at 19:12, Surojit D wrote: &gt; Dear Support Team, &gt; &gt; I placed my order nearly two weeks ago, but it has still not been &gt; delivered. &gt; &gt; The tracking information has not been updated for the past five days, and &gt; I have been unable to reach customer support. &gt; &gt; Could you please investigate the delay and let me know when I can expect &gt; delivery? &gt; &gt; If the shipment cannot be delivered soon, I would like to request a refund. &gt; &gt; Thank you. &gt; &gt; Regards, &gt; Rahul Verma &gt;</external_source>",
+        "thread_messages": [
+          {
+            "id": "19f28376e62ad267",
+            "thread_id": "19f28376e62ad267",
+            "from": "Surojit D <surojitdutta181993@gmail.com>",
+            "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+            "subject": "<external_source>Order Number: two</external_source>",
+            "date": "Fri, 3 Jul 2026 19:12:17 +0530",
+            "snippet": "<external_source>Dear Support Team, I placed my order nearly two weeks ago, but it has still not been delivered. The tracking information has not been updated for the past five days, and I have been unable to reach</external_source>",
+            "body": "<external_source>Dear Support Team, I placed my order nearly two weeks ago, but it has still not been delivered. The tracking information has not been updated for the past five days, and I have been unable to reach customer support. Could you please investigate the delay and let me know when I can expect delivery? If the shipment cannot be delivered soon, I would like to request a refund. Thank you. Regards, Rahul Verma</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          }
+        ],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 237,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><p>Dear Support Team,</p><p>I am following up on my previous email regarding the delayed delivery of my order. Unfortunately, I have not yet received any update from your team.</p><p>It has now been over two weeks since I placed the order, and the tracking status still has not changed. This delay is causing significant inconvenience, as I needed the product by last week.</p><p>Could you please provide a clear update on the current status of my shipment? If the package has been lost or cannot be delivered within the next few days, I would appreciate it if you could initiate the refund process immediately.</p><p>I would be grateful if someone from your support team could respond as soon as possible with a resolution.</p><p>Thank you for your attention to this matter.</p><p>Kind regards,</p><p>Rahul Verma</p></div><br/><div class=\"gmail_quote gmail_quote_container\"><div class=\"gmail_attr\" dir=\"ltr\">On Fri, 3 Jul 2026 at 19:12, Surojit D &lt;<a href=\"mailto:surojitdutta181993@gmail.com\" rel=\"noopener noreferrer nofollow\" target=\"_blank\">surojitdutta181993@gmail.com</a>&gt; wrote:<br/></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><div dir=\"ltr\">Dear Support Team,<br/><br/>I placed my order nearly two weeks ago, but it has still not been delivered.<br/><br/>The tracking information has not been updated for the past five days, and I have been unable to reach customer support.<br/><br/>Could you please investigate the delay and let me know when I can expect delivery?<br/><br/>If the shipment cannot be delivered soon, I would like to request a refund.<br/><br/>Thank you.<br/><br/>Regards,<br/>Rahul Verma </div>\n</blockquote></div>",
+        "display_text": "Dear Support Team,\r\n\r\nI am following up on my previous email regarding the delayed delivery of my\r\norder. Unfortunately, I have not yet received any update from your team.\r\n\r\nIt has now been over two weeks since I placed the order, and the tracking\r\nstatus still has not changed. This delay is causing significant\r\ninconvenience, as I needed the product by last week.\r\n\r\nCould you please provide a clear update on the current status of my\r\nshipment? If the package has been lost or cannot be delivered within the\r\nnext few days, I would appreciate it if you could initiate the refund\r\nprocess immediately.\r\n\r\nI would be grateful if someone from your support team could respond as soon\r\nas possible with a resolution.\r\n\r\nThank you for your attention to this matter.\r\n\r\nKind regards,\r\n\r\nRahul Verma\r\n\r\nOn Fri, 3 Jul 2026 at 19:12, Surojit D <surojitdutta181993@gmail.com> wrote:\r\n\r\n> Dear Support Team,\r\n>\r\n> I placed my order nearly two weeks ago, but it has still not been\r\n> delivered.\r\n>\r\n> The tracking information has not been updated for the past five days, and\r\n> I have been unable to reach customer support.\r\n>\r\n> Could you please investigate the delay and let me know when I can expect\r\n> delivery?\r\n>\r\n> If the shipment cannot be delivered soon, I would like to request a refund.\r\n>\r\n> Thank you.\r\n>\r\n> Regards,\r\n> Rahul Verma\r\n>",
+        "has_display_html": true
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "priority=high; event_title=<none>; event_start=<none>; event_end=<none>; event_location=<none>",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    }
+  }
+}

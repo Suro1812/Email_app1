@@ -1,0 +1,34 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    null
+  ],
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "Analyze the following Gmail message context.\n\nMessage 1\nDate: 2024-01-01\nTo: \nFrom: a@b.com\nSubject: \nMessage_body: Urgent meeting!\nStructured_thread: Current message:\ndatetime: 2024-01-01\nsender: a@b.com\ncontent: Urgent meeting!\n\nPrevious messages: None\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one priority word on its own line, in the same order as the input messages.\nAllowed priority words: low, medium, high, urgent.\nThere is no normal priority for Analyzer Agent output. If a message feels ordinary but still asks the user to do something, use high or medium, never normal.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "from": "a@b.com",
+        "date": "2024-01-01",
+        "Message_body": "Urgent meeting!"
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "high",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    }
+  }
+}

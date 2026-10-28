@@ -1,0 +1,58 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    null
+  ],
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-04T12:32:34\n\nMessage 1\nDate: 2024-01-01\nTo: \nFrom: a@b.com\nSubject: \nMessage_body: Hi\nStructured_thread: Current message:\ndatetime: 2024-01-01\nsender: a@b.com\ncontent: Hi\n\nOutput instructions:\nReturn JSON only. Do not include markdown, reasoning, labels, or tool calls.\nReturn one object with a messages array, in the same order as the input messages.\nEach item in messages must follow this schema exactly:\n{\n  \"category\": \"calendar_event | reminder | none\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"start_date\": \"\",\n  \"start_time\": null,\n  \"end_date\": null,\n  \"end_time\": null,\n  \"location\": null,\n  \"participants\": [],\n  \"meeting_platform\": null,\n  \"requires_confirmation\": false,\n  \"confidence\": 0.0,\n  \"reason\": \"\"\n}\n\nYou are an Event and Reminder Analyzer.\n\nYour job is to determine whether an email contains an actionable item for the email recipient.\n\nThe input email has already passed a rule-based filter and contains one or more detected date/time expressions.\n\nYour responsibilities are:\n\n1. Identify which extracted date(s) and time(s) actually belong to an actionable item.\n\nIgnore dates that refer to:\n- historical events\n- payment history\n- publication dates\n- previous meetings\n- examples\n- unrelated future dates\n- expiry dates unless they require user action\n\n2. Classify the actionable item.\n\nChoose exactly one category.\n\nA. CALENDAR_EVENT\n\nChoose this if the user is expected to attend something at a specific date/time.\n\nExamples:\n- Meeting\n- Interview\n- Doctor appointment\n- Conference\n- Webinar\n- Flight\n- Hotel check-in\n- Restaurant reservation\n- Official calendar invitation\n- Zoom/Google Meet/Teams meeting\n- Physical meeting\n\nB. REMINDER\n\nChoose this if the user must remember to perform an action but there is no scheduled event requiring attendance.\n\nExamples:\n- Pay invoice\n- Submit report\n- Renew insurance\n- Complete assignment\n- Send documents\n- Follow up\n- Call customer\n- Buy groceries\n\nC. NONE\n\nChoose NONE if no actionable reminder or event exists.\n\nExamples:\n- News\n- Advertisements\n- FYI emails\n- Historical references\n- General announcements\n\n3. If multiple dates exist:\n\nDetermine which date belongs to the actionable item.\n\nIgnore dates that merely describe:\n- unavailable dates\n- previous events\n- alternative examples\n- historical references\n\n4. Determine whether user confirmation is required.\n\nConfirmation should be true when:\n- date missing\n- time missing\n- multiple possible dates\n- ambiguous wording\n- confidence is low\n\n5. Never invent missing information.\n\nIf time is missing, set time to null.\nIf end time is unknown, set end_time to null.\nIf location is unknown, set location to null.\nUse lowercase category values only: calendar_event, reminder, none.\nUse ISO date format YYYY-MM-DD and 24-hour time format HH:MM:SS when known.\nUse the email received Date only to resolve relative phrases in the content, such as today, tomorrow, or 3 hours left.\nDo not draft a reply.",
+    "messages": [
+      {
+        "from": "a@b.com",
+        "date": "2024-01-01",
+        "Message_body": "Hi"
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "{\"messages\": [{\"category\": \"reminder\", \"title\": \"Review notes\", \"description\": \"Review the notes.\", \"start_date\": \"\", \"start_time\": null, \"end_date\": null, \"end_time\": null, \"location\": null, \"participants\": [], \"meeting_platform\": null, \"requires_confirmation\": true, \"confidence\": 0.8, \"reason\": \"The message asks the recipient to review notes.\"}]}",
+    "parsed": {
+      "messages": [
+        {
+          "category": "reminder",
+          "title": "Review notes",
+          "description": "Review the notes.",
+          "start_date": "",
+          "start_time": null,
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.8,
+          "reason": "The message asks the recipient to review notes."
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "category": "reminder",
+          "title": "Review notes",
+          "description": "Review the notes.",
+          "start_date": "",
+          "start_time": null,
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.8,
+          "reason": "The message asks the recipient to review notes."
+        }
+      ]
+    }
+  }
+}

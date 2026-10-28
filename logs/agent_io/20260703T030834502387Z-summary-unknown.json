@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": null,
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: a@b.com\nTo: \nDate: \nSubject: \nEMAIL_THREAD_START\nCurrent message:\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes.\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes.\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "",
+        "sender": "a@b.com",
+        "body": "Please review the attached notes."
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From a@b.com, unknown datetime: Please review the attached notes.\n\nPrevious messages:\n- None.\n\nUser action:\n- Review the attached notes.\n\nNotes:\n- No major caveats."
+  }
+}

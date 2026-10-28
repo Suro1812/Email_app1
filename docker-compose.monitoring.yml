@@ -1,0 +1,87 @@
+# Monitoring overlay. Use alongside the base compose file:
+#   docker compose -f docker-compose.yml -f docker-compose.monitoring.yml up -d
+#
+# Kept separate so the default `docker compose up` stays lean.
+
+services:
+  api:
+    environment:
+      # Only needed if WEB_CONCURRENCY > 1; harmless otherwise.
+      PROMETHEUS_MULTIPROC_DIR: /tmp/prometheus-api
+    volumes:
+      - api_metrics:/tmp/prometheus-api
+
+  worker:
+    environment:
+      # Celery's prefork children each keep their own registry. Without this
+      # shared directory the exporter in the parent would report almost nothing.
+      PROMETHEUS_MULTIPROC_DIR: /tmp/prometheus-worker
+      WORKER_METRICS_PORT: 9100
+    volumes:
+      - worker_metrics:/tmp/prometheus-worker
+    expose:
+      - "9100"
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=15d
+      - --web.enable-lifecycle
+    volumes:
+      - ./infra/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    depends_on:
+      - api
+      - worker
+
+  # Lets a long-running process push its metrics here instead of being
+  # scraped. The actual use case: an ACA container app has no public ingress
+  # on its metrics port, so it pushes over an ngrok tunnel to this gateway
+  # instead, and local Prometheus scrapes the gateway as a normal target.
+  pushgateway:
+    image: prom/pushgateway:v1.9.0
+    # No "ports:" — reachable only from other containers on this compose
+    # network (Prometheus) and from pushgateway-proxy. Never exposed to the
+    # host directly; the proxy below is the only path in from outside.
+    expose:
+      - "9091"
+
+  # The only piece ngrok actually tunnels to. Pushgateway itself has no
+  # authentication of any kind, so anything reachable from the public
+  # internet must go through this bearer-token check first.
+  pushgateway-proxy:
+    image: nginx:1.27-alpine
+    environment:
+      PUSHGATEWAY_AUTH_TOKEN: ${PUSHGATEWAY_AUTH_TOKEN}
+    volumes:
+      - ./infra/monitoring/pushgateway-proxy/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    ports:
+      - "${PUSHGATEWAY_PROXY_PORT:-9092}:9091"
+    depends_on:
+      - pushgateway
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - ./infra/monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infra/monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  prometheus_data:
+  grafana_data:
+  api_metrics:
+  worker_metrics:

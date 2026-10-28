@@ -1,0 +1,24 @@
+{
+  "agent": "summary",
+  "message_id": null,
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "You are summarizing a Gmail thread.\n\nRead the email thread and convert it into structured conversation history.\n\nRules for understanding the thread:\n- Treat Current message as the newest/latest email.\n- Treat Previous message 1 as the immediately prior email, Previous message 2 as the one before that, and so on.\n- Extract sender, datetime, and the main action/request.\n- Ignore quoted headers, HTML entities, greetings, and signatures.\n- Do not merge messages.\n\nReturn the final summary using this exact pointwise structure:\nCurrent message:\n- From <sender>, <datetime>: <summary of the latest/current message only>\n- From <sender>, <datetime>: <another current-message point if needed>\n\nPrevious messages:\n- From <sender>, <datetime>: <summary of the immediately prior message>\n- From <sender>, <datetime>: <summary of the next older message>\n- None.\n\nUser action:\n- <what the user should do next, or No clear user action requested.>\n\nNotes:\n- <important caveats, missing info, or No major caveats.>\n\nRules:\n- Use only the thread messages given below.\n- Treat the newest thread message as the current/latest email.\n- Treat earlier thread messages as previous messages.\n- Start with the current/latest message, then list previous messages newest-to-oldest.\n- Cover the whole thread, not only the current message.\n- Every bullet under Current message and Previous messages must reference the source sender and datetime.\n- Do not guess sender names.\n- Do not reverse who said what.\n- Keep message points separate; do not collapse the whole thread into one paragraph.\n- Do not include quoted headers, signatures, or raw email text.\n- Do not invent actions, commitments, dates, project details, or future actions.\n- Cover all meaningful details from the message and thread, including dates, deadlines, names, companies, locations, amounts, status changes, options, requirements, links, and requested actions when they matter.\n- Write a fuller summary body, not a compact one-line summary. Use multiple sentences or paragraphs when needed, while staying factual and readable.\n- Do not omit useful details just to keep the summary short.\n\nFrom: Nikhil <nikhil@example.com>\nTo: \nDate: Tue, 23 Jun 2026 16:00:00 +0530\nSubject: \nEMAIL_THREAD_START\nCurrent message:\ndatetime: 23 Jun 2026 04:00 PM\nsender: Nikhil\ncontent: Thursday afternoon works.\n\nPrevious message 1:\ndatetime: 23 Jun 2026 03:00 PM\nsender: Surojit\ncontent: I will prepare a roadmap.\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 23 Jun 2026 04:00 PM\nsender: Nikhil\ncontent: Thursday afternoon works.\n\nPrevious message 1:\ndatetime: 23 Jun 2026 03:00 PM\nsender: Surojit\ncontent: I will prepare a roadmap.",
+    "raw_thread_messages": [
+      {
+        "datetime": "Tue, 23 Jun 2026 15:00:00 +0530",
+        "sender": "Surojit <surojit@example.com>",
+        "body": "I will prepare a roadmap."
+      },
+      {
+        "datetime": "Tue, 23 Jun 2026 16:00:00 +0530",
+        "sender": "Nikhil <nikhil@example.com>",
+        "body": "Thursday afternoon works."
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Nikhil, 23 Jun 2026 04:00 PM: Nikhil agreed to meet Thursday afternoon.\n\nPrevious messages:\n- From Surojit, 23 Jun 2026 03:00 PM: Surojit said he would prepare a roadmap.\n\nUser action:\n- Prepare the roadmap before the meeting.\n\nNotes:\n- No major caveats."
+  }
+}

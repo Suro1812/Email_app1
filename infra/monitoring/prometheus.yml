@@ -1,0 +1,44 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # The FastAPI process, serving /metrics as an ordinary route. Carries the
+  # interactive path: tool calls made while a user is waiting on a response
+  # (/gmail/message, /reply/send, /writer/send, calendar RSVP).
+  - job_name: email-reminders-api
+    metrics_path: /metrics
+    static_configs:
+      # host.docker.internal reaches processes on the Mac itself, so this works
+      # for scripts/start-local-dev.sh. Switch to "api:8000" when the app runs
+      # inside compose instead.
+      - targets: ["host.docker.internal:8000"]
+        labels:
+          component: api
+
+  # The Celery worker. Carries the automated path: the background pipeline
+  # triggered by Gmail push, which is where the bulk of the tool and hook
+  # volume comes from. Celery has no HTTP server of its own, so this port is a
+  # standalone one started by start_worker_metrics_server().
+  - job_name: email-reminders-worker
+    static_configs:
+      # Same reasoning as the api job above.
+      - targets: ["host.docker.internal:9100"]
+        labels:
+          component: worker
+
+  # Pushgateway: the inverse of the two jobs above. Instead of Prometheus
+  # reaching out to the app, a process that can't be scraped (no public
+  # ingress — an ACA container app, for instance) pushes its metrics here on
+  # its own schedule, and this job just reads whatever is currently sitting
+  # in the gateway.
+  #
+  # honor_labels is required: without it, Prometheus overwrites every pushed
+  # label with the scrape target's own identity (job="email-reminders-
+  # pushgateway", instance="pushgateway:9091" for everything), which would
+  # erase the component/instance labels the app attached when it pushed and
+  # make api vs. worker vs. replica indistinguishable.
+  - job_name: email-reminders-pushgateway
+    honor_labels: true
+    static_configs:
+      - targets: ["pushgateway:9091"]

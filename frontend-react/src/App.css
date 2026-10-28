@@ -1,0 +1,148 @@
+/* Minimal, legible styling only — this file is not trying to match
+   frontend/styles.css (39KB, the real product's design). */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f7f7f8;
+  color: #1a1a1a;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.app-header-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  overflow: hidden;
+}
+
+.mailbox-pane {
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.reader-pane {
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.mailbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mailbox-row {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.mailbox-row:hover {
+  background: #f5f5f7;
+}
+
+.mailbox-row.selected {
+  background: #e8f0fe;
+}
+
+.mailbox-row-from {
+  font-size: 12px;
+  color: #666;
+}
+
+.mailbox-row-subject {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.mailbox-row-snippet {
+  font-size: 12px;
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-pill {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  background: #eee;
+  color: #555;
+}
+
+.message-headers {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  font-size: 13px;
+  row-gap: 4px;
+  margin: 12px 0;
+}
+
+.message-headers dt {
+  color: #888;
+}
+
+.message-headers dd {
+  margin: 0;
+}
+
+.message-body {
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.message-body-plain {
+  white-space: pre-wrap;
+}
+
+.warning-banner {
+  margin-top: 16px;
+  padding: 8px 12px;
+  background: #fff4e5;
+  border: 1px solid #ffcc80;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.empty-state,
+.error-state {
+  padding: 20px;
+  color: #888;
+  font-size: 13px;
+}
+
+.error-state {
+  color: #c0392b;
+}

@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f2831fc67af47b",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Surojit D <surojitdutta181993@gmail.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Fri, 3 Jul 2026 19:06:21 +0530\nSubject: <external_source>Subject: Update Regarding Your Application</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 3 Jul 2026 07:06 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 3 Jul 2026 07:06 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 3 Jul 2026 19:06:21 +0530",
+        "sender": "Surojit D <surojitdutta181993@gmail.com>",
+        "body": "<external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Surojit D, 3 Jul 2026 at 19:06 (India time): The sender informed the user that they have decided to move forward with another candidate whose experience more closely matches their requirements. They expressed appreciation for the interview and the user's technical knowledge but stated this was a rejection based on current role fit, while encouraging future applications.\n\nPrevious messages:\n- None.\n\nUser action:\n- No clear user action requested.\n\nNotes:\n- The decision to reject is final; no further steps are required from the user regarding this specific opportunity."
+  }
+}

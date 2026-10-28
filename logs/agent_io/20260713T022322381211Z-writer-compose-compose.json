@@ -1,0 +1,15 @@
+{
+  "agent": "writer",
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Write or revise a Gmail compose draft in plain text only. Use a formal format. Follow User_writing_input closely. Use To and Subject only as context. First classify User_writing_input silently: if it is an existing email body, draft text, or a request to correct, rephrase, polish, improve, rewrite, make formal, make informal, shorten, or expand provided text, revise that provided text while preserving its meaning, facts, recipients, and intent. If User_writing_input is an instruction to write a message, generate the requested email body. If User_writing_input contains both an instruction and draft text, apply the instruction to the draft text. Do not invent facts, attachments, payments, project details, calendar availability, or commitments that are not provided by the user. If the input is too vague to safely write a complete message, write a concise draft that asks for the missing details. Return only the email body. Do not return JSON, labels, subject, reasoning, markdown, or tool calls.\n\nWriting_format: formal\nTo: \nSubject: \nUser_writing_input: write a mail to a chemist shop who didnt send my medicines",
+    "to": "",
+    "subject": "",
+    "user_writing_instruction": "write a mail to a chemist shop who didnt send my medicines",
+    "writing_format": "formal"
+  },
+  "output": {
+    "draft": "Dear Chemist Shop Team,\n\nI am writing regarding an order for which I have not yet received the prescribed medications. Could you please provide me with an update on the status of this delivery and let me know when they can be expected? Additionally, if there are any issues preventing shipment or payment concerns that need to be addressed, kindly inform me so we may resolve them promptly.\n\nI look forward to your prompt response.\n\nSincerely,  \n[Your Name]",
+    "format": "formal"
+  }
+}

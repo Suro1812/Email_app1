@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Mail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260725-reply-intent-separate" />
+  </head>
+  <body>
+    <div class="app-shell" id="appShell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="gmail-mark" aria-hidden="true">M</div>
+          <div>
+            <h1>AI Mail</h1>
+            <p>Gmail assistant</p>
+          </div>
+        </div>
+
+        <button class="compose-button" id="composeButton" type="button">
+          <span class="mail-icon" aria-hidden="true">+</span>
+          <span>Compose</span>
+        </button>
+
+        <nav class="mailbox-list" aria-label="Gmail folders">
+          <button class="mailbox-link active" type="button" data-mailbox="inbox">
+            <span class="mail-icon" aria-hidden="true">□</span>
+            <span>Inbox</span>
+            <strong class="mailbox-count" data-count-for="inbox"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="starred">
+            <span class="mail-icon" aria-hidden="true">☆</span>
+            <span>Starred</span>
+            <strong class="mailbox-count" data-count-for="starred"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="snoozed">
+            <span class="mail-icon" aria-hidden="true">◷</span>
+            <span>Snoozed</span>
+            <strong class="mailbox-count" data-count-for="snoozed"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="important">
+            <span class="mail-icon" aria-hidden="true">›</span>
+            <span>Important</span>
+            <strong class="mailbox-count" data-count-for="important"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="sent">
+            <span class="mail-icon" aria-hidden="true">▷</span>
+            <span>Sent</span>
+            <strong class="mailbox-count" data-count-for="sent"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="drafts">
+            <span class="mail-icon" aria-hidden="true">▯</span>
+            <span>Drafts</span>
+            <strong class="mailbox-count" data-count-for="drafts"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="purchases">
+            <span class="mail-icon" aria-hidden="true">▢</span>
+            <span>Purchases</span>
+            <strong class="mailbox-count" data-count-for="purchases"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="social">
+            <span class="mail-icon" aria-hidden="true">◦</span>
+            <span>Social</span>
+            <strong class="mailbox-count" data-count-for="social"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="updates">
+            <span class="mail-icon" aria-hidden="true">i</span>
+            <span>Updates</span>
+            <strong class="mailbox-count" data-count-for="updates"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="forums">
+            <span class="mail-icon" aria-hidden="true">▱</span>
+            <span>Forums</span>
+            <strong class="mailbox-count" data-count-for="forums"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="promotions">
+            <span class="mail-icon" aria-hidden="true">◇</span>
+            <span>Promotions</span>
+            <strong class="mailbox-count" data-count-for="promotions"></strong>
+          </button>
+          <button class="mailbox-link" type="button" data-mailbox="more">
+            <span class="mail-icon" aria-hidden="true">⌄</span>
+            <span>More</span>
+            <strong class="mailbox-count" data-count-for="more"></strong>
+          </button>
+          <button class="mailbox-link has-tooltip" type="button" data-view="calendar" data-tooltip="Calendar" aria-label="Calendar">
+            <span class="mail-icon svg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                <path d="M16 3v4M8 3v4M3 10h18"></path>
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </span>
+            <span>Calendar</span>
+            <strong class="mailbox-count" data-count-for="calendar"></strong>
+          </button>
+        </nav>
+
+        <div class="status-panel">
+          <div class="status-row">
+            <span class="status-dot" id="healthDot"></span>
+            <span id="healthText">Checking API</span>
+          </div>
+          <button class="icon-button" id="refreshHealth" type="button" title="Refresh" aria-label="Refresh">
+            <span aria-hidden="true">R</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="topbar">
+          <div>
+            <p class="eyebrow" id="mailboxEyebrow">AI Mail</p>
+            <h2 id="mailboxTitle">Inbox</h2>
+          </div>
+          <button class="secondary" id="loginButton" type="button">Connect</button>
+        </section>
+
+        <section class="toolbar" id="mailboxToolbar" aria-label="Message filters">
+          <div class="email-field">
+            <label for="emailInput">Gmail address</label>
+            <input id="emailInput" type="email" placeholder="user@gmail.com" autocomplete="email" />
+          </div>
+          <div class="mail-view-field">
+            <label for="mailViewFilter">View</label>
+            <select id="mailViewFilter" aria-label="Filter Gmail mailbox view">
+              <option value="all">All in this tab</option>
+              <option value="unread">Unread only</option>
+            </select>
+          </div>
+          <div class="mail-search-field">
+            <label for="mailSearchInput">Search mail</label>
+            <div class="mail-search-input-row">
+              <input id="mailSearchInput" type="search" placeholder="Search all mail" autocomplete="off" />
+              <button class="icon-button" id="clearMailSearch" type="button" title="Clear search" aria-label="Clear search" hidden>&times;</button>
+            </div>
+          </div>
+          <button class="secondary" id="mailSearchButton" type="button">Search</button>
+          <button class="primary" id="refreshMessages" type="button">Refresh mailbox</button>
+        </section>
+
+        <section class="content-grid" id="mailWorkspace">
+          <div class="workspace-main">
+          <article class="message-panel" id="mailboxView">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Messages</p>
+                <h3 id="messagePanelTitle">Inbox messages</h3>
+              </div>
+              <span class="badge" id="messageCount">0</span>
+            </div>
+            <div class="inbox-tabs" id="inboxTabs" role="tablist" aria-label="Inbox categories">
+              <button class="inbox-tab active" type="button" role="tab" aria-selected="true" data-inbox-category="primary">
+                <span class="mail-icon" aria-hidden="true">▣</span>
+                <span>Primary</span>
+              </button>
+              <button class="inbox-tab" type="button" role="tab" aria-selected="false" data-inbox-category="promotions">
+                <span class="mail-icon" aria-hidden="true">◇</span>
+                <span>Promotions</span>
+              </button>
+              <button class="inbox-tab" type="button" role="tab" aria-selected="false" data-inbox-category="social">
+                <span class="mail-icon" aria-hidden="true">◦</span>
+                <span>Social</span>
+              </button>
+              <button class="inbox-tab" type="button" role="tab" aria-selected="false" data-inbox-category="updates">
+                <span class="mail-icon" aria-hidden="true">i</span>
+                <span>Updates</span>
+              </button>
+            </div>
+            <div class="message-list" id="messageList" aria-live="polite">
+              <div class="empty-state">No messages loaded.</div>
+            </div>
+            <div class="pagination-controls" id="mailboxPagination" hidden aria-label="Mailbox pages">
+              <button class="secondary page-nav" id="previousPage" type="button">Previous</button>
+              <div class="page-numbers" id="pageNumbers" aria-label="Known pages"></div>
+              <button class="secondary page-nav" id="nextPage" type="button">Next</button>
+            </div>
+          </article>
+
+          <section class="calendar-view" id="calendarView" hidden>
+            <div class="panel-heading calendar-view-heading">
+              <div>
+                <p class="eyebrow">Calendar</p>
+                <h3 id="calendarViewTitle">Events</h3>
+              </div>
+              <div class="calendar-controls" role="group" aria-label="Calendar range">
+                <button class="secondary calendar-mode active" type="button" data-calendar-mode="day">Day</button>
+                <button class="secondary calendar-mode" type="button" data-calendar-mode="week">Week</button>
+                <button class="secondary calendar-mode" type="button" data-calendar-mode="month">Month</button>
+              </div>
+            </div>
+            <div class="calendar-board" id="calendarBoard" aria-live="polite">
+              <div class="empty-state">No calendar events loaded.</div>
+            </div>
+          </section>
+          </div>
+
+          <aside class="calendar-panel" id="upcomingEventsPanel" aria-label="Calendar notifications" aria-hidden="true">
+            <div class="panel-heading">
+              <div class="calendar-panel-title has-tooltip" data-tooltip="Upcoming events">
+                <span class="panel-title-icon svg-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                    <path d="M10 21h4"></path>
+                    <path d="M9 2h6"></path>
+                  </svg>
+                </span>
+                <div>
+                <p class="eyebrow">Calendar notifications</p>
+                <h3>Upcoming events</h3>
+                </div>
+              </div>
+              <div class="calendar-panel-actions">
+                <span class="badge" id="calendarCount">0</span>
+                <button class="icon-button has-tooltip" id="closeUpcomingEvents" type="button" data-tooltip="Close" aria-label="Close upcoming events">
+                  <span aria-hidden="true">x</span>
+                </button>
+              </div>
+            </div>
+            <div class="calendar-list" id="calendarList" aria-live="polite">
+              <div class="empty-state">No events detected yet.</div>
+            </div>
+          </aside>
+        </section>
+
+        <nav class="side-rail" aria-label="Calendar shortcuts">
+          <button class="side-rail-button has-tooltip" id="openCalendarView" type="button" data-tooltip="Calendar" aria-label="Open calendar">
+            <span class="svg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                <path d="M16 3v4M8 3v4M3 10h18"></path>
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="side-rail-button has-tooltip" id="openUpcomingEvents" type="button" data-tooltip="Upcoming events" aria-label="Open upcoming events" aria-expanded="false">
+            <span class="svg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                <path d="M10 21h4"></path>
+                <path d="M9 2h6"></path>
+              </svg>
+            </span>
+            <strong id="upcomingRailCount">0</strong>
+          </button>
+        </nav>
+
+        <section class="activity-panel" aria-live="polite">
+          <div>
+            <p class="eyebrow">Activity</p>
+            <p id="activityText">Ready.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <div class="modal-backdrop" id="messageModal">
+      <section class="message-modal" role="dialog" aria-modal="true" aria-labelledby="selectedSubject">
+        <div class="modal-header gmail-modal-toolbar">
+          <div></div>
+          <button class="icon-button" id="closeModal" type="button" title="Close" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+
+        <div class="gmail-selected-subject-row">
+          <h3 id="selectedSubject">Choose a message</h3>
+          <span id="selectedStatus" class="gmail-label-chip">Gmail message</span>
+        </div>
+
+        <div class="gmail-selected-sender">
+          <div class="gmail-avatar selected-avatar" id="selectedAvatar" aria-hidden="true">?</div>
+          <div class="gmail-selected-meta">
+            <div class="gmail-selected-from-line">
+              <strong id="selectedFrom">-</strong>
+              <time id="selectedTime">-</time>
+              <div class="gmail-inline-actions" aria-label="Message actions">
+                <button class="icon-button has-tooltip" id="replyIconButton" type="button" data-tooltip="Reply" aria-label="Reply">
+                  <span class="svg-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9 7 4 12l5 5"></path>
+                      <path d="M20 18v-2a4 4 0 0 0-4-4H4"></path>
+                    </svg>
+                  </span>
+                </button>
+                <button class="icon-button has-tooltip" id="forwardIconButton" type="button" data-tooltip="Forward" aria-label="Forward">
+                  <span class="svg-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="m15 7 5 5-5 5"></path>
+                      <path d="M4 18v-2a4 4 0 0 1 4-4h12"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <button class="gmail-to-me" id="selectedRecipientToggle" type="button" aria-expanded="false">
+              to me
+              <span aria-hidden="true">▾</span>
+            </button>
+            <div class="gmail-recipient-details" id="selectedRecipientDetails" hidden>
+              <div><span>from</span><strong id="selectedDetailFrom">-</strong></div>
+              <div><span>to</span><strong id="selectedDetailTo">-</strong></div>
+              <div id="selectedDetailCcRow" hidden><span>cc</span><strong id="selectedDetailCc">-</strong></div>
+              <div id="selectedDetailBccRow" hidden><span>bcc</span><strong id="selectedDetailBcc">-</strong></div>
+              <div><span>date</span><strong id="selectedDetailDate">-</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="selectedCalendarInviteActions" class="selected-calendar-invite" hidden></div>
+
+        <div class="message-reader-heading">Message</div>
+        <div class="message-reader" aria-label="Selected email body">
+          <iframe
+            id="selectedMessageFrame"
+            class="message-html-frame"
+            title="Selected email HTML preview"
+            sandbox="allow-popups allow-popups-to-escape-sandbox"
+            referrerpolicy="no-referrer"
+            tabindex="0"
+            hidden
+          ></iframe>
+          <div id="selectedMessagePlain" class="message-plain">Select a Gmail message to view its body.</div>
+        </div>
+        <textarea id="selectedSummary" hidden readonly></textarea>
+
+        <input id="selectedMessageId" type="hidden" />
+
+        <div class="modal-actions">
+          <button class="primary" id="summaryButton" type="button">Summary</button>
+        </div>
+
+        <section class="summary-result" id="summaryResult" hidden>
+          <h4 id="generatedSummaryLabel">Summary</h4>
+          <div id="generatedSummary" class="markdown-output" role="region" aria-labelledby="generatedSummaryLabel"></div>
+        </section>
+
+        <section class="reply-composer" id="replyComposer" hidden>
+          <div class="compose-address-fields reply-address-fields">
+            <div class="compose-recipient-row">
+              <label for="replyTo">To</label>
+              <input id="replyTo" type="text" placeholder="" />
+              <div class="compose-recipient-toggles">
+                <button type="button" data-reply-toggle="cc">Cc</button>
+                <button type="button" data-reply-toggle="bcc">Bcc</button>
+              </div>
+            </div>
+            <div class="compose-recipient-row" id="replyCcRow" hidden>
+              <label for="replyCc">Cc</label>
+              <input id="replyCc" type="text" placeholder="" />
+            </div>
+            <div class="compose-recipient-row" id="replyBccRow" hidden>
+              <label for="replyBcc">Bcc</label>
+              <input id="replyBcc" type="text" placeholder="" />
+            </div>
+          </div>
+          <label for="replyIntentEditor">Reply intent</label>
+          <div class="rich-editor" data-rich-editor="replyIntentEditor">
+            <div class="rich-toolbar" id="replyIntentToolbar" role="toolbar" aria-label="Reply intent formatting">
+              <select class="ql-font" title="Font">
+                <option selected>Sans Serif</option>
+                <option value="serif"></option>
+                <option value="monospace"></option>
+                <option value="times-new-roman">Times New Roman</option>
+                <option value="arial">Arial</option>
+                <option value="georgia">Georgia</option>
+              </select>
+              <select class="ql-size" title="Size">
+                <option value="small"></option>
+                <option selected>Normal</option>
+                <option value="large"></option>
+                <option value="huge"></option>
+              </select>
+              <button class="ql-bold" type="button"></button>
+              <button class="ql-italic" type="button"></button>
+              <button class="ql-underline" type="button"></button>
+              <button class="ql-strike" type="button"></button>
+              <select class="ql-color"></select>
+              <select class="ql-background"></select>
+              <button class="ql-image" type="button" title="Insert photo"></button>
+              <button class="ql-list" value="ordered" type="button"></button>
+              <button class="ql-list" value="bullet" type="button"></button>
+              <select class="ql-align"></select>
+              <button class="ql-link" type="button"></button>
+              <button class="editor-tool" type="button" data-editor-action="signature" title="Insert signature">Sig</button>
+              <button class="editor-tool" type="button" data-editor-action="emoji" title="Insert emoji">☺</button>
+              <button class="ql-clean" type="button"></button>
+            </div>
+            <div
+              id="replyIntentEditor"
+              class="rich-editor-surface compact"
+              data-placeholder="Example: Politely say I will review this today and follow up tomorrow."
+            ></div>
+          </div>
+          <textarea id="replyIntent" hidden></textarea>
+          <button class="primary" id="replyButton" type="button">Generate reply</button>
+
+          <label for="generatedReplyEditor">Reply draft</label>
+          <div class="rich-editor" data-rich-editor="generatedReplyEditor">
+            <div class="rich-toolbar" id="generatedReplyToolbar" role="toolbar" aria-label="Reply formatting">
+              <select class="ql-font" title="Font">
+                <option selected>Sans Serif</option>
+                <option value="serif"></option>
+                <option value="monospace"></option>
+                <option value="times-new-roman">Times New Roman</option>
+                <option value="arial">Arial</option>
+                <option value="georgia">Georgia</option>
+              </select>
+              <select class="ql-size" title="Size">
+                <option value="small"></option>
+                <option selected>Normal</option>
+                <option value="large"></option>
+                <option value="huge"></option>
+              </select>
+              <button class="ql-bold" type="button"></button>
+              <button class="ql-italic" type="button"></button>
+              <button class="ql-underline" type="button"></button>
+              <button class="ql-strike" type="button"></button>
+              <select class="ql-color"></select>
+              <select class="ql-background"></select>
+              <button class="ql-image" type="button" title="Insert photo"></button>
+              <button class="ql-list" value="ordered" type="button"></button>
+              <button class="ql-list" value="bullet" type="button"></button>
+              <select class="ql-align"></select>
+              <button class="ql-link" type="button"></button>
+              <button class="editor-tool" type="button" data-editor-action="signature" title="Insert signature">Sig</button>
+              <button class="editor-tool" type="button" data-editor-action="emoji" title="Insert emoji">☺</button>
+              <button class="ql-clean" type="button"></button>
+            </div>
+            <div
+              id="generatedReplyEditor"
+              class="rich-editor-surface"
+              data-placeholder="Generated reply will appear here."
+            ></div>
+          </div>
+          <textarea id="generatedReply" hidden></textarea>
+          <div class="attachment-control">
+            <label class="attachment-button" for="replyAttachments">Attach document</label>
+            <input id="replyAttachments" class="attachment-input" type="file" multiple />
+            <div id="replyAttachmentList" class="attachment-list" aria-live="polite"></div>
+          </div>
+          <button class="primary danger" id="sendReplyButton" type="button">Send reply</button>
+        </section>
+
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="composeModal">
+      <section class="message-modal compose-modal" role="dialog" aria-modal="true" aria-labelledby="composeTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Compose</p>
+            <h3 id="composeTitle">New message</h3>
+          </div>
+          <button class="icon-button" id="closeComposeModal" type="button" title="Close" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+
+        <div class="compose-address-fields">
+          <div class="compose-recipient-row">
+            <label for="composeTo">To</label>
+            <input id="composeTo" type="email" placeholder="" />
+            <div class="compose-recipient-toggles" aria-label="Show recipient fields">
+              <button type="button" data-compose-toggle="cc">Cc</button>
+              <button type="button" data-compose-toggle="bcc">Bcc</button>
+            </div>
+          </div>
+          <div class="compose-recipient-row" id="composeCcRow" hidden>
+            <label for="composeCc">Cc</label>
+            <input id="composeCc" type="text" placeholder="" />
+          </div>
+          <div class="compose-recipient-row" id="composeBccRow" hidden>
+            <label for="composeBcc">Bcc</label>
+            <input id="composeBcc" type="text" placeholder="" />
+          </div>
+          <div class="compose-recipient-row subject-row">
+            <label for="composeSubject">Subject</label>
+            <input id="composeSubject" type="text" placeholder="Subject" />
+          </div>
+        </div>
+
+        <section class="compose-reply-intent" id="composeReplyIntentSection" hidden>
+          <label for="composeReplyIntent">Reply intent</label>
+          <textarea id="composeReplyIntent" rows="3" placeholder="Tell the AI what the reply should say."></textarea>
+        </section>
+
+        <section class="compose-thread-surface" id="composeThreadSurface">
+          <div class="rich-editor compose-body-editor compose-body-inline" data-rich-editor="writerInstructionEditor">
+            <div class="rich-toolbar" id="writerInstructionToolbar" role="toolbar" aria-label="Instruction formatting">
+              <button id="writerFormatButton" class="writer-format-tool" type="button" data-format="formal" title="Writing format">Formal</button>
+              <select class="ql-font" title="Font">
+                <option selected>Sans Serif</option>
+                <option value="serif"></option>
+                <option value="monospace"></option>
+                <option value="times-new-roman">Times New Roman</option>
+                <option value="arial">Arial</option>
+                <option value="georgia">Georgia</option>
+              </select>
+              <select class="ql-size" title="Size">
+                <option value="small"></option>
+                <option selected>Normal</option>
+                <option value="large"></option>
+                <option value="huge"></option>
+              </select>
+              <button class="ql-bold" type="button"></button>
+              <button class="ql-italic" type="button"></button>
+              <button class="ql-underline" type="button"></button>
+              <button class="ql-strike" type="button"></button>
+              <select class="ql-color"></select>
+              <select class="ql-background"></select>
+              <button class="ql-image" type="button" title="Insert photo"></button>
+              <button class="ql-list" value="ordered" type="button"></button>
+              <button class="ql-list" value="bullet" type="button"></button>
+              <select class="ql-align"></select>
+              <button class="ql-link" type="button"></button>
+              <button class="editor-tool" type="button" data-editor-action="signature" title="Insert signature">Sig</button>
+              <button class="editor-tool" type="button" data-editor-action="emoji" title="Insert emoji">☺</button>
+              <button class="ql-clean" type="button"></button>
+            </div>
+            <div
+              id="writerInstructionEditor"
+              class="rich-editor-surface compact"
+              data-placeholder="Paste a draft to correct, or ask the writer to create a new mail."
+            ></div>
+          </div>
+          <textarea id="writerInstruction" hidden></textarea>
+          <section class="compose-original-preview inline" id="composeOriginalPreview" hidden>
+            <div class="compose-original-title" id="composeOriginalTitle">Tagged message</div>
+            <iframe
+              id="composeOriginalFrame"
+              title="Tagged original message preview"
+              sandbox="allow-popups allow-popups-to-escape-sandbox"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </section>
+        </section>
+        <div class="compose-actions">
+          <button class="primary" id="sendWriterButton" type="button">Send</button>
+          <button class="secondary" id="writerButton" type="button">Use AI writer</button>
+        </div>
+        <div class="attachment-control">
+          <label class="attachment-button" for="writerAttachments">Attach document</label>
+          <input id="writerAttachments" class="attachment-input" type="file" multiple />
+          <div id="writerAttachmentList" class="attachment-list" aria-live="polite"></div>
+        </div>
+        <textarea id="generatedWriterDraft" hidden></textarea>
+      </section>
+    </div>
+
+    <div class="floating-menu emoji-menu" id="emojiMenu" hidden>
+      <button type="button" data-emoji="🙂">🙂</button>
+      <button type="button" data-emoji="😊">😊</button>
+      <button type="button" data-emoji="👍">👍</button>
+      <button type="button" data-emoji="🙏">🙏</button>
+      <button type="button" data-emoji="✅">✅</button>
+      <button type="button" data-emoji="❤️">❤️</button>
+      <button type="button" data-emoji="🎉">🎉</button>
+      <button type="button" data-emoji="📅">📅</button>
+      <button type="button" data-emoji="💬">💬</button>
+      <button type="button" data-emoji="✨">✨</button>
+    </div>
+
+    <div class="floating-menu signature-menu" id="signatureMenu" hidden>
+      <button type="button" data-signature-action="insert">Insert signature</button>
+      <button type="button" data-signature-action="manage">Manage signature</button>
+    </div>
+
+    <div class="floating-menu writer-format-menu" id="writerFormatMenu" hidden>
+      <button type="button" data-writer-format="formal">Formal</button>
+      <button type="button" data-writer-format="informal">Informal</button>
+    </div>
+
+    <div class="modal-backdrop" id="signatureModal" aria-hidden="true">
+      <section class="message-modal signature-modal" role="dialog" aria-modal="true" aria-labelledby="signatureTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Signature</p>
+            <h3 id="signatureTitle">Manage signature</h3>
+          </div>
+          <button class="icon-button" id="closeSignatureModal" type="button" title="Close" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+        <div class="rich-editor signature-editor-shell" data-rich-editor="signatureEditor">
+          <div class="rich-toolbar" id="signatureToolbar" role="toolbar" aria-label="Signature formatting">
+            <select class="ql-font" title="Font">
+              <option selected>Sans Serif</option>
+              <option value="serif"></option>
+              <option value="monospace"></option>
+              <option value="times-new-roman">Times New Roman</option>
+              <option value="arial">Arial</option>
+              <option value="georgia">Georgia</option>
+            </select>
+            <select class="ql-size" title="Size">
+              <option value="small"></option>
+              <option selected>Normal</option>
+              <option value="large"></option>
+              <option value="huge"></option>
+            </select>
+            <button class="ql-bold" type="button"></button>
+            <button class="ql-italic" type="button"></button>
+            <button class="ql-underline" type="button"></button>
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+            <button class="ql-image" type="button" title="Insert photo"></button>
+            <button class="ql-list" value="ordered" type="button"></button>
+            <button class="ql-list" value="bullet" type="button"></button>
+            <select class="ql-align"></select>
+            <button class="ql-link" type="button"></button>
+            <button class="ql-clean" type="button"></button>
+          </div>
+          <div id="signatureEditor" class="rich-editor-surface compact"></div>
+        </div>
+        <textarea id="signatureValue" hidden></textarea>
+        <div class="compose-actions">
+          <button class="primary" id="saveSignatureButton" type="button">Save signature</button>
+          <button class="secondary" id="insertManagedSignatureButton" type="button">Insert</button>
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="/static/mail-cache.js?v=20260726-local-cache"></script>
+    <script src="/static/app.js?v=20260725-reply-intent-separate"></script>
+  </body>
+</html>

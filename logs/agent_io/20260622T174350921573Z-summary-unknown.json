@@ -1,0 +1,12 @@
+{
+  "agent": "summary",
+  "message_id": null,
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "You are summarizing a Gmail thread.\n\nRead the email thread and convert it into structured conversation history.\n\nRules for understanding the thread:\n- Order messages chronologically, oldest first.\n- Extract sender, datetime, and the main action/request.\n- Ignore quoted headers, HTML entities, greetings, and signatures.\n- Do not merge messages.\n\nUse this structure mentally:\nCurrent message:\nsender: ...\ncontent: ...\n\nPrevious messages:\n1. datetime | sender | action\n2. datetime | sender | action\n3. datetime | sender | action\n\nRules:\n- Use only the thread messages given below.\n- Treat the newest thread message as the current/latest email.\n- Treat earlier thread messages as previous messages.\n- Do not guess sender names.\n- Do not reverse who said what.\n- Summarize chronologically from oldest to newest.\n- Mention the current/latest request separately at the end.\n- Do not include quoted headers, signatures, or raw email text.\n- Do not invent actions, commitments, dates, project details, or future actions.\n- Output 3-6 plain text sentences only.\n\nFrom: a@b.com\nTo: \nDate: \nSubject: \nEMAIL_THREAD_START\nThread message 1\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes.\nEMAIL_THREAD_END",
+    "thread_messages": "Thread message 1\ndatetime: unknown date\nsender: a@b.com\ncontent: Please review the attached notes."
+  },
+  "output": {
+    "summary": "A concise summary."
+  }
+}

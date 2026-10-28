@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f4c641be4e1d20",
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Keep the final answer within 500 tokens. Prefer concise wording over extra detail when space is tight.\nFrom: 1mg <no-reply@mail.1mg.com>\nTo: surojitdutta1812@gmail.com\nDate: Fri, 10 Jul 2026 19:47:36 +0530\nSubject: <external_source>OTP for TATA 1mg Login</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 10 Jul 2026 07:47 PM\nsender: 1mg\ncontent: <external_source>1mg\nPharmacy Lab Tests eConsult\nDownload the App Now\nHello,\nWe have received a request for login. Your One Time Password (OTP) is 391401 which is valid for 15 minutes.\nIf you face any issue, write to us at care@1mg.com .\nRegards,\nTeam 1mg\nNeed Help? Click to contact us for queries</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 10 Jul 2026 07:47 PM\nsender: 1mg\ncontent: <external_source>1mg\nPharmacy Lab Tests eConsult\nDownload the App Now\nHello,\nWe have received a request for login. Your One Time Password (OTP) is 391401 which is valid for 15 minutes.\nIf you face any issue, write to us at care@1mg.com .\nRegards,\nTeam 1mg\nNeed Help? Click to contact us for queries</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 10 Jul 2026 19:47:36 +0530",
+        "sender": "1mg <no-reply@mail.1mg.com>",
+        "body": "<external_source>1mg\nPharmacy Lab Tests eConsult\nDownload the App Now\nHello,\nWe have received a request for login. Your One Time Password (OTP) is 391401 which is valid for 15 minutes.\nIf you face any issue, write to us at care@1mg.com .\nRegards,\nTeam 1mg\nNeed Help? Click to contact us for queries</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From 1mg, Fri Jul 10 2026 7:47 PM: Sent OTP `391401` valid for 15 minutes to login via the TATA 1mg app (Pharmacy/Lab Tests/eConsult). Provided support email care@1mg.com.\n\nUser action:\n- Enter OTP `391401` in the app within 15 minutes if you intended this request; otherwise ignore or contact care@1mg.com to revoke it."
+  }
+}

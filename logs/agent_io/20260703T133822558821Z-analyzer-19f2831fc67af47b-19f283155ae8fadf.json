@@ -1,0 +1,96 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19f2831fc67af47b",
+    "19f283155ae8fadf"
+  ],
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-03T13:38:15\n\nMessage 1\nDate: Fri, 3 Jul 2026 19:06:21 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Subject: Update Regarding Your Application</external_source>\nMessage_body: <external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>\nStructured_thread: Current message:\ndatetime: 3 Jul 2026 07:06 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>\n\nPrevious messages: None\n\nMessage 2\nDate: Fri, 3 Jul 2026 19:05:37 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Subject: Interview Invitation – Machine Learning Engineer</external_source>\nMessage_body: <external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>\nStructured_thread: Current message:\ndatetime: 3 Jul 2026 07:05 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>\n\nPrevious messages: None\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19f2831fc67af47b",
+        "thread_id": "19f2831fc67af47b",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "subject": "<external_source>Subject: Update Regarding Your Application</external_source>",
+        "date": "Fri, 3 Jul 2026 19:06:21 +0530",
+        "snippet": "<external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward</external_source>",
+        "body": "<external_source>Dear Surojit, Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process. After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements. We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization. We wish you every success in your career. Regards, Talent Acquisition Team</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 72,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><p class=\"gmail-PDq2pG_selectionAnchorContainer\"><br/></p>\n<p>Dear Surojit,</p>\n<p>Thank you for taking the time to interview with us. We appreciate the effort you invested throughout the selection process.</p>\n<p>After careful consideration, we have decided to move forward with another candidate whose experience more closely matches our current requirements.</p>\n<p>We were impressed by your technical knowledge and encourage you to apply for future opportunities with our organization.</p>\n<p>We wish you every success in your career.</p>\n<p>Regards,<br/>\r\nTalent Acquisition Team</p></div>",
+        "display_text": "Dear Surojit,\r\n\r\nThank you for taking the time to interview with us. We appreciate the\r\neffort you invested throughout the selection process.\r\n\r\nAfter careful consideration, we have decided to move forward with another\r\ncandidate whose experience more closely matches our current requirements.\r\n\r\nWe were impressed by your technical knowledge and encourage you to apply\r\nfor future opportunities with our organization.\r\n\r\nWe wish you every success in your career.\r\n\r\nRegards,\r\nTalent Acquisition Team",
+        "has_display_html": true
+      },
+      {
+        "id": "19f283155ae8fadf",
+        "thread_id": "19f283155ae8fadf",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "subject": "<external_source>Subject: Interview Invitation – Machine Learning Engineer</external_source>",
+        "date": "Fri, 3 Jul 2026 19:05:37 +0530",
+        "snippet": "<external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview</external_source>",
+        "body": "<external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 108,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><p class=\"gmail-PDq2pG_selectionAnchorContainer\"><br/><span aria-hidden=\"true\" class=\"gmail-PDq2pG_selectionAnchor\"></span></p>\n<p>Dear Surojit,</p>\n<p>Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews.</p>\n<p>The interview is scheduled for <strong>Monday, 13 July at 10:00 AM IST</strong> and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design.</p>\n<p>Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots.</p>\n<p>The meeting link and interview panel details will be shared after confirmation.</p>\n<p>We look forward to speaking with you.</p>\n<p>Best regards,<br/>\r\nPriya Sharma<br/>\r\nSenior Recruiter</p>\n<p></p></div>",
+        "display_text": "Dear Surojit,\r\n\r\nThank you for applying for the Machine Learning Engineer position at\r\nInnovaTex. After reviewing your profile, we would like to invite you for\r\nthe next round of interviews.\r\n\r\nThe interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will\r\nbe conducted over Microsoft Teams. The discussion will include your\r\nprevious projects, Python programming, machine learning fundamentals, and\r\nsystem design.\r\n\r\nPlease reply confirming your availability. If the proposed timing does not\r\nwork, let us know two alternative time slots.\r\n\r\nThe meeting link and interview panel details will be shared after\r\nconfirmation.\r\n\r\nWe look forward to speaking with you.\r\n\r\nBest regards,\r\nPriya Sharma\r\nSenior Recruiter",
+        "has_display_html": true
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "priority=normal; event_title=None; event_start=None; event_end=None; location=None\npriority=high; event_title=Machine Learning Engineer Interview Round 2; event_start=2026-07-13T14:00:00; event_end=None; location=Microsoft Teams",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "normal"
+        },
+        {
+          "priority": "high",
+          "calendar_event": {
+            "detected": true,
+            "title": "Machine Learning Engineer Interview Round 2",
+            "start_at": "2026-07-13T14:00:00",
+            "end_at": null,
+            "location": "",
+            "notification_minutes_before": 15
+          }
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "normal"
+        },
+        {
+          "priority": "high",
+          "calendar_event": {
+            "detected": true,
+            "title": "Machine Learning Engineer Interview Round 2",
+            "start_at": "2026-07-13T14:00:00",
+            "end_at": null,
+            "location": "",
+            "notification_minutes_before": 15
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Mail Login</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <section class="login-screen">
+      <div class="login-panel">
+        <div class="gmail-mark" aria-hidden="true">M</div>
+        <p class="eyebrow">AI Mail</p>
+        <h1>AI Mail</h1>
+        <p class="login-copy">Connect your Google account to open your Gmail assistant.</p>
+        <button class="primary login-connect" id="googleLoginButton" type="button">Continue with Google</button>
+        <p class="login-status" id="loginStatus" hidden></p>
+      </div>
+    </section>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const error = params.get("auth_error");
+      const status = document.querySelector("#loginStatus");
+      const button = document.querySelector("#googleLoginButton");
+      if (error) {
+        status.hidden = false;
+        status.textContent = error;
+      }
+      button.addEventListener("click", () => {
+        window.location.assign("/auth/login");
+      });
+    </script>
+  </body>
+</html>

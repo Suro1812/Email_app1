@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f283155ae8fadf",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Surojit D <surojitdutta181993@gmail.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Fri, 3 Jul 2026 19:05:37 +0530\nSubject: <external_source>Subject: Interview Invitation – Machine Learning Engineer</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 3 Jul 2026 07:05 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 3 Jul 2026 07:05 PM\nsender: Surojit D\ncontent: <external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 3 Jul 2026 19:05:37 +0530",
+        "sender": "Surojit D <surojitdutta181993@gmail.com>",
+        "body": "<external_source>Dear Surojit, Thank you for applying for the Machine Learning Engineer position at InnovaTex. After reviewing your profile, we would like to invite you for the next round of interviews. The interview is scheduled for *Monday, 13 July at 10:00 AM IST* and will be conducted over Microsoft Teams. The discussion will include your previous projects, Python programming, machine learning fundamentals, and system design. Please reply confirming your availability. If the proposed timing does not work, let us know two alternative time slots. The meeting link and interview panel details will be shared after confirmation. We look forward to speaking with you. Best regards, Priya Sharma Senior Recruiter</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Surojit D, 3 Jul 2026 at 19:05 (IST): Invited to the next round of interviews for the Machine Learning Engineer position at InnovaTex. The interview is scheduled for Monday, July 13th at 10:00 AM IST via Microsoft Teams. Topics will cover previous projects, Python programming, machine learning fundamentals, and system design. A confirmation reply is requested; if unavailable, two alternative time slots must be provided. The meeting link and panel details are pending sharing after confirmation.\n\nPrevious messages:\n- None.\n\nUser action:\n- Confirm availability for the scheduled interview or provide two alternative time slots by replying to this email.\n\nNotes:\n- No major caveats."
+  }
+}

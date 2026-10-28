@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f2b74169f3f351",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Neha from ClearTax <support@cleartax.in>\nTo: surojitdutta1812@gmail.com\nDate: Sat, 04 Jul 2026 10:17:34 +0530\nSubject: <external_source>Massive Offer: Get Flat 70% Off On All ITR Filing Plan</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 4 Jul 2026 10:17 AM\nsender: Neha from ClearTax\ncontent: <external_source>--Click Here to unsubscribe from this newsletter.</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 4 Jul 2026 10:17 AM\nsender: Neha from ClearTax\ncontent: <external_source>--Click Here to unsubscribe from this newsletter.</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Sat, 04 Jul 2026 10:17:34 +0530",
+        "sender": "Neha from ClearTax <support@cleartax.in>",
+        "body": "<external_source>--Click Here to unsubscribe from this newsletter.</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "- From `Neha from ClearTax`, **Today (Jul 4, 2026)** at **10:17 AM**: The sender sent a promotional email offering a flat 70% discount on all Income Tax Return (ITR) filing plans."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "1a02dca2bbca7d78",
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Keep the final answer within 500 tokens. Prefer concise wording over extra detail when space is tight.\nFrom: SPIN CYCLES Login OTP <admin@spincycles.in>\nTo: surojitdutta1812@gmail.com\nDate: Sun, 23 Aug 2026 08:43:37 +0000\nSubject: <external_source>One Time Password</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 23 Aug 2026 08:43 AM\nsender: SPIN CYCLES Login OTP\ncontent: <external_source>Dear Customer, One Time Password (OTP) for SPIN CYCLES is 9967 To report fraud, mail us at support@spincycles.in Please Note: Spin Cycles will never send you an email asking for your Login Credentials. Please do not respond to any email requesting such information. Warm Regards, SPIN CYCLES SCHEDULE PICKUP FIND A STORE Support: support@spincycles.in Call Us: +91 8880004880 Laundry, 123, Opposite Mc Donald&#x27;s, Brookfield, ITPL main road., Bangalore, karnataka, 560037, India UNSUBSCRIBE</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 23 Aug 2026 08:43 AM\nsender: SPIN CYCLES Login OTP\ncontent: <external_source>Dear Customer, One Time Password (OTP) for SPIN CYCLES is 9967 To report fraud, mail us at support@spincycles.in Please Note: Spin Cycles will never send you an email asking for your Login Credentials. Please do not respond to any email requesting such information. Warm Regards, SPIN CYCLES SCHEDULE PICKUP FIND A STORE Support: support@spincycles.in Call Us: +91 8880004880 Laundry, 123, Opposite Mc Donald&#x27;s, Brookfield, ITPL main road., Bangalore, karnataka, 560037, India UNSUBSCRIBE</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Sun, 23 Aug 2026 08:43:37 +0000",
+        "sender": "SPIN CYCLES Login OTP <admin@spincycles.in>",
+        "body": "<external_source>Dear Customer, One Time Password (OTP) for SPIN CYCLES is 9967 To report fraud, mail us at support@spincycles.in Please Note: Spin Cycles will never send you an email asking for your Login Credentials. Please do not respond to any email requesting such information. Warm Regards, SPIN CYCLES SCHEDULE PICKUP FIND A STORE Support: support@spincycles.in Call Us: +91 8880004880 Laundry, 123, Opposite Mc Donald&#x27;s, Brookfield, ITPL main road., Bangalore, karnataka, 560037, India UNSUBSCRIBE</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From SPIN CYCLES Login OTP, Sun Aug 23 2026 08:43 AM: The sender provides a One Time Password (OTP) as 9967 for the user's SPIN CYCLES login.\n- From SPIN CYCLES Login OTP, Sun Aug 23 2026 08:43 AM: The email includes fraud reporting instructions via support@spincycles.in and warns that Spin Cycles will never request login credentials in an email.\n- From SPIN CYCLES Login OTP, Sun Aug 23 2026 08:43 AM: Contact details are provided for the store located at Brookfield, ITPL main road, Bangalore, including a support phone number (+91 8880004880).\n\nUser action:\n- Use the OTP (9967) to log in to SPIN CYCLES if this was an expected transaction. If unexpected, report it as fraud immediately using the provided email or phone number."
+  }
+}

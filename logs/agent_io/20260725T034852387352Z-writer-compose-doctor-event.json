@@ -1,0 +1,15 @@
+{
+  "agent": "writer",
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Write or revise a Gmail compose draft in plain text only. Use a informal format. Follow User_writing_input closely. Use To and Subject only as context. First classify User_writing_input silently: if it is an existing email body, draft text, or a request to correct, rephrase, polish, improve, rewrite, make formal, make informal, shorten, or expand provided text, revise that provided text while preserving its meaning, facts, recipients, and intent. If User_writing_input is an instruction to write a message, generate the requested email body. If User_writing_input contains both an instruction and draft text, apply the instruction to the draft text. Do not invent facts, attachments, payments, project details, calendar availability, or commitments that are not provided by the user. If the input is too vague to safely write a complete message, write a concise draft that asks for the missing details. Return only the email body. Do not return JSON, labels, subject, reasoning, markdown, or tool calls.\n\nWriting_format: informal\nTo: surojitdutta181993@gmail.com\nSubject: doctor event\nUser_writing_input: mail to my wife with a reminder of doctor meet today 5 pm",
+    "to": "surojitdutta181993@gmail.com",
+    "subject": "doctor event",
+    "user_writing_instruction": "mail to my wife with a reminder of doctor meet today 5 pm",
+    "writing_format": "informal"
+  },
+  "output": {
+    "draft": "Hey dear, just a quick reminder that we have the doctor's appointment at 5 PM today. Let me know if you need anything before then! Love, [Your Name]",
+    "format": "informal"
+  }
+}

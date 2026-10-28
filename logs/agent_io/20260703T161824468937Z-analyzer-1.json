@@ -1,0 +1,35 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    null
+  ],
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-03T16:18:24\n\nMessage 1\nDate: 2024-06-01\nTo: \nFrom: teammate@corp.com\nSubject: Urgent approval\nMessage_body: Can you approve and reply asap?\nStructured_thread: Current message:\ndatetime: 2024-06-01\nsender: teammate@corp.com\ncontent: Can you approve and reply asap?\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nExtract event date/time from the email subject/body/thread content, not from the Gmail received Date header. Use the received Date only to resolve relative phrases in the content, such as today, tomorrow, or 3 hours left.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "from": "teammate@corp.com",
+        "date": "2024-06-01",
+        "subject": "Urgent approval",
+        "Message_body": "Can you approve and reply asap?"
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "normal",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "urgent"
+        }
+      ]
+    }
+  }
+}

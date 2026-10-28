@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f382c269127d4e",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: ICICI Bank <services@custcomm.icici.bank.in>\nTo: surojitdutta1812@gmail.com\nDate: Mon, 06 Jul 2026 21:34:05 +0530\nSubject: <external_source>Pause. Check 1600. Answer.</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 6 Jul 2026 09:34 PM\nsender: ICICI Bank\ncontent: <external_source>1600 hai, Safe hai Dear Customer, All calls from ICICI Bank will always be from numbers beginning with 1600 and can be trusted. Numbers beginning with 1600 are used for official and legitimate communication. This has been introduced as guided by the Telecom Regulatory Authority of India (TRAI), intended to assist and safeguard you against unauthorised or fraudulent calls. Genuine calls from a bank never ask for OTPs, PINs or Passwords. Stay alert. Stay safe! Sincerely, Team ICICI Bank Need help? Just reach out to us 1800-1080 For further assistance WhatsApp us | Locate a branch Manage/Access your account Net Banking | iMobile Protect your money from fraudsters SmartLock on iMobile This is a system generated e-mail. Please do not reply. T&amp;Cs | Disclaimer</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 6 Jul 2026 09:34 PM\nsender: ICICI Bank\ncontent: <external_source>1600 hai, Safe hai Dear Customer, All calls from ICICI Bank will always be from numbers beginning with 1600 and can be trusted. Numbers beginning with 1600 are used for official and legitimate communication. This has been introduced as guided by the Telecom Regulatory Authority of India (TRAI), intended to assist and safeguard you against unauthorised or fraudulent calls. Genuine calls from a bank never ask for OTPs, PINs or Passwords. Stay alert. Stay safe! Sincerely, Team ICICI Bank Need help? Just reach out to us 1800-1080 For further assistance WhatsApp us | Locate a branch Manage/Access your account Net Banking | iMobile Protect your money from fraudsters SmartLock on iMobile This is a system generated e-mail. Please do not reply. T&amp;Cs | Disclaimer</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Mon, 06 Jul 2026 21:34:05 +0530",
+        "sender": "ICICI Bank <services@custcomm.icici.bank.in>",
+        "body": "<external_source>1600 hai, Safe hai Dear Customer, All calls from ICICI Bank will always be from numbers beginning with 1600 and can be trusted. Numbers beginning with 1600 are used for official and legitimate communication. This has been introduced as guided by the Telecom Regulatory Authority of India (TRAI), intended to assist and safeguard you against unauthorised or fraudulent calls. Genuine calls from a bank never ask for OTPs, PINs or Passwords. Stay alert. Stay safe! Sincerely, Team ICICI Bank Need help? Just reach out to us 1800-1080 For further assistance WhatsApp us | Locate a branch Manage/Access your account Net Banking | iMobile Protect your money from fraudsters SmartLock on iMobile This is a system generated e-mail. Please do not reply. T&amp;Cs | Disclaimer</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From ICICI Bank, 06 Jul 2026 at 9:34 PM (India time): Confirmed that all official calls from the bank start with \"1600\" and are safe to trust. Clarified that genuine banks never request OTPs, PINs, or passwords via phone. Advised customers to stay alert against fraudsters and provided contact details for assistance (call 1800-1080)."
+  }
+}

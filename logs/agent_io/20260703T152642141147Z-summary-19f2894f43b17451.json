@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f2894f43b17451",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Surojit D <surojitdutta181993@gmail.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Fri, 3 Jul 2026 20:54:26 +0530\nSubject: <external_source>Update Regarding Your Medicine Order</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 3 Jul 2026 08:54 PM\nsender: Surojit D\ncontent: <external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 3 Jul 2026 08:54 PM\nsender: Surojit D\ncontent: <external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 3 Jul 2026 20:54:26 +0530",
+        "sender": "Surojit D <surojitdutta181993@gmail.com>",
+        "body": "<external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Surojit D (Surojit Dutta), Fri Jul 3, 2026 at 8:54 PM: The sender informs the customer that one medicine in their recent prescription is currently unavailable. Fresh stock from the supplier is expected within three days. They offer two options for resolution: either notify them once the stock arrives or suggest an equivalent generic alternative after consulting with the physician, and they request a preference be provided."
+  }
+}

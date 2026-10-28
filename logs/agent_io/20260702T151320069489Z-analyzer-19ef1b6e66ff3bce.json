@@ -1,0 +1,64 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19ef1b6e66ff3bce"
+  ],
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-02T15:13:13\n\nMessage 1\nDate: Mon, 22 Jun 2026 23:42:35 +0000\nTo: surojitdutta1812@gmail.com\nFrom: IIT Madras Alumni Association <alumni@iitmaa.org>\nSubject: <external_source>IITMAA UK Chapter Meet | Chief Guest: Periasamy Kumaran</external_source>\nMessage_body: <external_source>Dear Surojit Dutta, We are honoured to welcome Mr. Periasamy Kumaran (BTEE &#x27;90), IFS, High Commissioner of India to the United Kingdom, as the Chief Guest at the IITMAA UK Chapter Annual Meet in London on Sunday, 5 July 2026. 🗓️ Date: Sun, 5th July 🕓 Time: 12:00 PM 📍 Location: St Peter de Beauvoir Town, (The Hall &amp; Cafe) Northchurch Terrace, London, N1 4DA 💷 Alumni: £35 | 🎓 Students: £20**Includes lunch. Email maha@iitmaa.org with your student ID for the student payment link. Register Now Catch up with fellow IITM alumni and hear the latest updates from IIT Madras and IITMAA. Enjoy a fun IITM quiz and games, take home exclusive IITM goodies, and network over a delicious lunch by The Mallu Barstud, featuring Southern Kerala-inspired cuisine packed with flavour and nostalgia. 🎥 Watch a special invitation from IITMAA President Sridhar Boovaraghavan (BTCE &#x27;91) and join us for an enjoyable afternoon with the IITM community in the UK. Spread the word and invite fellow IITM alumni! Sign up today, and let&#x27;s make this alumni meet one to remember. We look forward to seeing you there!Warm regards, IITMAA Team 📅 Upcoming IITM Events Around the World Venue Guidelines &amp; Parking No parking is available on-site. Limited on-street parking is available nearby. Please check local parking restrictions before parking. Paid parking is available adjacent to the venue. Smoking is strictly prohibited within the venue premises. Please help us keep the venue clean and follow any instructions provided by the venue staff. Kindly be mindful of local residents when arriving and departing from the venue. IMPORTANT: Please do not share this mail with others, as it gives direct access to your account You received this email because you are a member of Indian Institute of Technology Madras Alumni Association - Alumni Portal. You can unsubscribe from all the mails by clicking the following link http://www.almashines.com/api/mail/unsubscribe?id=1310175&amp;type=1&amp;token=77740b81dc31837c2b963236dc0b30c2&amp;cid=146</external_source>\nStructured_thread: Current message:\ndatetime: 22 Jun 2026 11:42 PM\nsender: IIT Madras Alumni Association\ncontent: <external_source>Dear Surojit Dutta, We are honoured to welcome Mr. Periasamy Kumaran (BTEE &#x27;90), IFS, High Commissioner of India to the United Kingdom, as the Chief Guest at the IITMAA UK Chapter Annual Meet in London on Sunday, 5 July 2026. 🗓️ Date: Sun, 5th July 🕓 Time: 12:00 PM 📍 Location: St Peter de Beauvoir Town, (The Hall &amp; Cafe) Northchurch Terrace, London, N1 4DA 💷 Alumni: £35 | 🎓 Students: £20**Includes lunch. Email maha@iitmaa.org with your student ID for the student payment link. Register Now Catch up with fellow IITM alumni and hear the latest updates from IIT Madras and IITMAA. Enjoy a fun IITM quiz and games, take home exclusive IITM goodies, and network over a delicious lunch by The Mallu Barstud, featuring Southern Kerala-inspired cuisine packed with flavour and nostalgia. 🎥 Watch a special invitation from IITMAA President Sridhar Boovaraghavan (BTCE &#x27;91) and join us for an enjoyable afternoon with the IITM community in the UK. Spread the word and invite fellow IITM alumni! Sign up today, and let&#x27;s make this alumni meet one to remember. We look forward to seeing you there!Warm regards, IITMAA Team 📅 Upcoming IITM Events Around the World Venue Guidelines &amp; Parking No parking is available on-site. Limited on-street parking is available nearby. Please check local parking restrictions before parking. Paid parking is available adjacent to the venue. Smoking is strictly prohibited within the venue premises. Please help us keep the venue clean and follow any instructions provided by the venue staff. Kindly be mindful of local residents when arriving and departing from the venue. IMPORTANT: Please do not share this mail with others, as it gives direct access to your account You received this email because you are a member of Indian Institute of Technology Madras Alumni Association - Alumni Portal. You can unsubscribe from all the mails by clicking the following link http://www.almashines.com/api/mail/unsubscribe?id=1310175&amp;type=1&amp;token=77740b81dc31837c2b963236dc0b30c2&amp;cid=146</external_source>\n\nPrevious messages: None\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19ef1b6e66ff3bce",
+        "thread_id": "19ef1b6e66ff3bce",
+        "from": "IIT Madras Alumni Association <alumni@iitmaa.org>",
+        "to": "surojitdutta1812@gmail.com",
+        "subject": "<external_source>IITMAA UK Chapter Meet | Chief Guest: Periasamy Kumaran</external_source>",
+        "date": "Mon, 22 Jun 2026 23:42:35 +0000",
+        "snippet": "<external_source>Dear Surojit Dutta, We are honoured to welcome Mr. Periasamy Kumaran (BTEE &#x27;90), IFS, High Commissio Dear Surojit Dutta, We are honoured to welcome Mr. Periasamy Kumaran (BTEE &#x27;90), IFS, High</external_source>",
+        "body": "<external_source>Dear Surojit Dutta, We are honoured to welcome Mr. Periasamy Kumaran (BTEE &#x27;90), IFS, High Commissioner of India to the United Kingdom, as the Chief Guest at the IITMAA UK Chapter Annual Meet in London on Sunday, 5 July 2026. 🗓️ Date: Sun, 5th July 🕓 Time: 12:00 PM 📍 Location: St Peter de Beauvoir Town, (The Hall &amp; Cafe) Northchurch Terrace, London, N1 4DA 💷 Alumni: £35 | 🎓 Students: £20**Includes lunch. Email maha@iitmaa.org with your student ID for the student payment link. Register Now Catch up with fellow IITM alumni and hear the latest updates from IIT Madras and IITMAA. Enjoy a fun IITM quiz and games, take home exclusive IITM goodies, and network over a delicious lunch by The Mallu Barstud, featuring Southern Kerala-inspired cuisine packed with flavour and nostalgia. 🎥 Watch a special invitation from IITMAA President Sridhar Boovaraghavan (BTCE &#x27;91) and join us for an enjoyable afternoon with the IITM community in the UK. Spread the word and invite fellow IITM alumni! Sign up today, and let&#x27;s make this alumni meet one to remember. We look forward to seeing you there!Warm regards, IITMAA Team 📅 Upcoming IITM Events Around the World Venue Guidelines &amp; Parking No parking is available on-site. Limited on-street parking is available nearby. Please check local parking restrictions before parking. Paid parking is available adjacent to the venue. Smoking is strictly prohibited within the venue premises. Please help us keep the venue clean and follow any instructions provided by the venue staff. Kindly be mindful of local residents when arriving and departing from the venue. IMPORTANT: Please do not share this mail with others, as it gives direct access to your account You received this email because you are a member of Indian Institute of Technology Madras Alumni Association - Alumni Portal. You can unsubscribe from all the mails by clicking the following link http://www.almashines.com/api/mail/unsubscribe?id=1310175&amp;type=1&amp;token=77740b81dc31837c2b963236dc0b30c2&amp;cid=146</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 313,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "priority=normal; event_title=IITMAA UK Chapter Annual Meet; event_start=2026-07-05T12:00:00; event_location=St Peter de Beauvoir Town, The Hall & Cafe, Northchurch Terrace, London, N1 4DA",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "high",
+          "calendar_event": {
+            "detected": true,
+            "title": "IITMAA UK Chapter Annual Meet",
+            "start_at": "2026-07-05T12:00:00",
+            "end_at": null,
+            "location": "St Peter de Beauvoir Town, The Hall & Cafe, Northchurch Terrace, London, N1 4DA",
+            "notification_minutes_before": 15
+          }
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "high",
+          "calendar_event": {
+            "detected": true,
+            "title": "IITMAA UK Chapter Annual Meet",
+            "start_at": "2026-07-05T12:00:00",
+            "end_at": null,
+            "location": "St Peter de Beauvoir Town, The Hall & Cafe, Northchurch Terrace, London, N1 4DA",
+            "notification_minutes_before": 15
+          }
+        }
+      ]
+    }
+  }
+}

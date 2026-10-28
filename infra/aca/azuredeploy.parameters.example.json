@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "version": {
+      "value": "0.1.1"
+    },
+    "gitSha": {
+      "value": "local"
+    },
+    "imageRef": {
+      "value": "myregistry.azurecr.io/email-reminders:0.1.1"
+    },
+    "revisionSuffix": {
+      "value": "v-0-1-1"
+    },
+    "acrLoginServer": {
+      "value": "myregistry.azurecr.io"
+    },
+    "acrResourceId": {
+      "value": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/rg-email-reminders/providers/Microsoft.ContainerRegistry/registries/myregistry"
+    },
+    "managedIdentityName": {
+      "value": "email-reminders-aca-pull"
+    },
+    "containerAppsEnvironmentName": {
+      "value": "email-reminders-env"
+    },
+    "apiAppName": {
+      "value": "email-reminders-api"
+    },
+    "workerAppName": {
+      "value": "email-reminders-worker"
+    },
+    "appEnv": {
+      "value": [
+        {
+          "name": "DATABASE_URL",
+          "value": "postgresql://username:password@host:5432/email_reminders"
+        },
+        {
+          "name": "CELERY_BROKER_URL",
+          "value": "rediss://:password@redis.redis.cache.windows.net:6380/0"
+        },
+        {
+          "name": "CELERY_RESULT_BACKEND",
+          "value": "rediss://:password@redis.redis.cache.windows.net:6380/1"
+        }
+      ]
+    }
+  }
+}

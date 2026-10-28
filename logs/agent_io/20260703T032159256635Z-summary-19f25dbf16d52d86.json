@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f25dbf16d52d86",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Tata Neu <hello@getujobs.com>\nTo: surojitdutta1812@gmail.com\nDate: Fri, 03 Jul 2026 02:43:18 +0000\nSubject: <external_source>Welcome to TATA Neu Credit Card is available here</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 3 Jul 2026 02:43 AM\nsender: Tata Neu\ncontent: <external_source>![ ](http://images.v3cars.in/mails/UR/tataneujune.jpg)</external_source>\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 3 Jul 2026 02:43 AM\nsender: Tata Neu\ncontent: <external_source>![ ](http://images.v3cars.in/mails/UR/tataneujune.jpg)</external_source>\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 03 Jul 2026 02:43:18 +0000",
+        "sender": "Tata Neu <hello@getujobs.com>",
+        "body": "<external_source>![ ](http://images.v3cars.in/mails/UR/tataneujune.jpg)</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From `Tata Neu`, 03 Jul 2026 at 02:43 AM: The sender sent a welcome email announcing that the TATA Neu Credit Card is available, including an image attachment.\n\nPrevious messages:\n- None.\n\nUser action:\n- No clear user action requested.\n\nNotes:\n- No major caveats."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "agent": "writer",
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Write or revise a Gmail compose draft in plain text only. Use a formal format. Follow User_writing_input closely. Use To and Subject only as context. First classify User_writing_input silently: if it is an existing email body, draft text, or a request to correct, rephrase, polish, improve, rewrite, make formal, make informal, shorten, or expand provided text, revise that provided text while preserving its meaning, facts, recipients, and intent. If User_writing_input is an instruction to write a message, generate the requested email body. If User_writing_input contains both an instruction and draft text, apply the instruction to the draft text. Do not invent facts, attachments, payments, project details, calendar availability, or commitments that are not provided by the user. If the input is too vague to safely write a complete message, write a concise draft that asks for the missing details. Return only the email body. Do not return JSON, labels, subject, reasoning, markdown, or tool calls.\n\nWriting_format: formal\nTo: \nSubject: \nUser_writing_input: Write a mail to my wife for a doctors appointment at 5 pm today",
+    "to": "",
+    "subject": "",
+    "user_writing_instruction": "Write a mail to my wife for a doctors appointment at 5 pm today",
+    "writing_format": "formal"
+  },
+  "output": {
+    "draft": "Dear [Wife's Name],\n\nI am writing to inform you that we have a doctor's appointment scheduled for this afternoon at 5 PM. Please let me know if there are any preparations needed or if you would like assistance with transportation prior to the visit.\n\nBest regards,  \n[Your Name]",
+    "format": "formal"
+  }
+}

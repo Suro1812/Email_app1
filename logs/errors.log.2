@@ -1,0 +1,138 @@
+2026-07-06 21:44:06,271 ERROR [MainProcess] app.webhook: pipeline_message_ids_enqueue_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2127, in _exec_insertmany_context
+    dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1045, 19f382c269127d4e, , null, null, null, null, null, null, 1, null, null, analyzing, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:06.246285, 2026-07-06 16:14:06.24585, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 372, in mark_messages_analysis_queued
+    return apply_marks()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 368, in apply_marks
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1144, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_insertmany_context(dialect, context)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2135, in _exec_insertmany_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2127, in _exec_insertmany_context
+    dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1045, 19f382c269127d4e, , null, null, null, null, null, null, 1, null, null, analyzing, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:06.246285, 2026-07-06 16:14:06.24585, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadli ... 21800 characters truncated ... nter) ORDER BY sen_counter RETURNING email_message_reminders.id, email_message_reminders.id AS id__1]
+[parameters: {'calendar_event_start_at__0': None, 'processing_status__0': 'analyzing', 'llm_summary_tokens_input__0': None, 'calendar_event_location__0': None, 'from_address__0': None, 'created_at__0': datetime.datetime(2026, 7, 6, 16, 14, 6, 246285), 'reply_needed__0': None, 'prompt_cache_hit__0': None, 'deadline__0': None, 'message_id__0': '19f382c269127d4e', 'llm_reply_tokens_input__0': None, 'detected_intent__0': None, 'reply_subject__0': None, 'summarized_subject__0': '', 'to_address__0': None, 'llm_summary_tokens_output__0': None, 'reply_status__0': 'pending', 'action_items_json__0': None, 'summarized_body__0': None, 'suggested_reply__0': None, 'reply_body__0': None, 'calendar_event_detected__0': False, 'message_time__0': None, 'updated_at__0': datetime.datetime(2026, 7, 6, 16, 14, 6, 245850), 'skip_reason__0': None, 'calendar_event_title__0': None, 'llm_reply_tokens_output__0': None, 'calendar_notification_sent__0': False, 'message_date__0': None, 'calendar_notification_at__0': None, 'calendar_event_end_at__0': None, 'user_id__0': 1, 'calendar_event_start_at__1': None, 'processing_status__1': 'analyzing', 'llm_summary_tokens_input__1': None, 'calendar_event_location__1': None, 'from_address__1': None, 'created_at__1': datetime.datetime(2026, 7, 6, 16, 14, 6, 246741), 'reply_needed__1': None, 'prompt_cache_hit__1': None, 'deadline__1': None, 'message_id__1': '19f380ced5a2751e', 'llm_reply_tokens_input__1': None, 'detected_intent__1': None, 'reply_subject__1': None, 'summarized_subject__1': '', 'to_address__1': None, 'llm_summary_tokens_output__1': None, 'reply_status__1': 'pending', 'action_items_json__1': None ... 700 parameters truncated ... 'to_address__23': None, 'llm_summary_tokens_output__23': None, 'reply_status__23': 'pending', 'action_items_json__23': None, 'summarized_body__23': None, 'suggested_reply__23': None, 'reply_body__23': None, 'calendar_event_detected__23': False, 'message_time__23': None, 'updated_at__23': datetime.datetime(2026, 7, 6, 16, 14, 6, 245850), 'skip_reason__23': None, 'calendar_event_title__23': None, 'llm_reply_tokens_output__23': None, 'calendar_notification_sent__23': False, 'message_date__23': None, 'calendar_notification_at__23': None, 'calendar_event_end_at__23': None, 'user_id__23': 1, 'calendar_event_start_at__24': None, 'processing_status__24': 'analyzing', 'llm_summary_tokens_input__24': None, 'calendar_event_location__24': None, 'from_address__24': None, 'created_at__24': datetime.datetime(2026, 7, 6, 16, 14, 6, 251934), 'reply_needed__24': None, 'prompt_cache_hit__24': None, 'deadline__24': None, 'message_id__24': '19f36d89b1e24e43', 'llm_reply_tokens_input__24': None, 'detected_intent__24': None, 'reply_subject__24': None, 'summarized_subject__24': '', 'to_address__24': None, 'llm_summary_tokens_output__24': None, 'reply_status__24': 'pending', 'action_items_json__24': None, 'summarized_body__24': None, 'suggested_reply__24': None, 'reply_body__24': None, 'calendar_event_detected__24': False, 'message_time__24': None, 'updated_at__24': datetime.datetime(2026, 7, 6, 16, 14, 6, 245850), 'skip_reason__24': None, 'calendar_event_title__24': None, 'llm_reply_tokens_output__24': None, 'calendar_notification_sent__24': False, 'message_date__24': None, 'calendar_notification_at__24': None, 'calendar_event_end_at__24': None, 'user_id__24': 1}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2127, in _exec_insertmany_context
+    dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1046, 19f382c269127d4e, , null, null, null, null, null, null, 1, null, null, analyzing, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:06.261813, 2026-07-06 16:14:06.261632, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/webhook.py", line 545, in run_pipeline_for_message_ids_endpoint
+    mark_messages_analysis_queued(email, request.message_ids)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 374, in mark_messages_analysis_queued
+    return apply_marks()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 368, in apply_marks
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1144, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_insertmany_context(dialect, context)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2135, in _exec_insertmany_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2127, in _exec_insertmany_context
+    dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1046, 19f382c269127d4e, , null, null, null, null, null, null, 1, null, null, analyzing, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:06.261813, 2026-07-06 16:14:06.261632, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadli ... 21800 characters truncated ... nter) ORDER BY sen_counter RETURNING email_message_reminders.id, email_message_reminders.id AS id__1]
+[parameters: {'calendar_event_start_at__0': None, 'processing_status__0': 'analyzing', 'llm_summary_tokens_input__0': None, 'calendar_event_location__0': None, 'from_address__0': None, 'created_at__0': datetime.datetime(2026, 7, 6, 16, 14, 6, 261813), 'reply_needed__0': None, 'prompt_cache_hit__0': None, 'deadline__0': None, 'message_id__0': '19f382c269127d4e', 'llm_reply_tokens_input__0': None, 'detected_intent__0': None, 'reply_subject__0': None, 'summarized_subject__0': '', 'to_address__0': None, 'llm_summary_tokens_output__0': None, 'reply_status__0': 'pending', 'action_items_json__0': None, 'summarized_body__0': None, 'suggested_reply__0': None, 'reply_body__0': None, 'calendar_event_detected__0': False, 'message_time__0': None, 'updated_at__0': datetime.datetime(2026, 7, 6, 16, 14, 6, 261632), 'skip_reason__0': None, 'calendar_event_title__0': None, 'llm_reply_tokens_output__0': None, 'calendar_notification_sent__0': False, 'message_date__0': None, 'calendar_notification_at__0': None, 'calendar_event_end_at__0': None, 'user_id__0': 1, 'calendar_event_start_at__1': None, 'processing_status__1': 'analyzing', 'llm_summary_tokens_input__1': None, 'calendar_event_location__1': None, 'from_address__1': None, 'created_at__1': datetime.datetime(2026, 7, 6, 16, 14, 6, 262094), 'reply_needed__1': None, 'prompt_cache_hit__1': None, 'deadline__1': None, 'message_id__1': '19f380ced5a2751e', 'llm_reply_tokens_input__1': None, 'detected_intent__1': None, 'reply_subject__1': None, 'summarized_subject__1': '', 'to_address__1': None, 'llm_summary_tokens_output__1': None, 'reply_status__1': 'pending', 'action_items_json__1': None ... 700 parameters truncated ... 'to_address__23': None, 'llm_summary_tokens_output__23': None, 'reply_status__23': 'pending', 'action_items_json__23': None, 'summarized_body__23': None, 'suggested_reply__23': None, 'reply_body__23': None, 'calendar_event_detected__23': False, 'message_time__23': None, 'updated_at__23': datetime.datetime(2026, 7, 6, 16, 14, 6, 261632), 'skip_reason__23': None, 'calendar_event_title__23': None, 'llm_reply_tokens_output__23': None, 'calendar_notification_sent__23': False, 'message_date__23': None, 'calendar_notification_at__23': None, 'calendar_event_end_at__23': None, 'user_id__23': 1, 'calendar_event_start_at__24': None, 'processing_status__24': 'analyzing', 'llm_summary_tokens_input__24': None, 'calendar_event_location__24': None, 'from_address__24': None, 'created_at__24': datetime.datetime(2026, 7, 6, 16, 14, 6, 266892), 'reply_needed__24': None, 'prompt_cache_hit__24': None, 'deadline__24': None, 'message_id__24': '19f36d89b1e24e43', 'llm_reply_tokens_input__24': None, 'detected_intent__24': None, 'reply_subject__24': None, 'summarized_subject__24': '', 'to_address__24': None, 'llm_summary_tokens_output__24': None, 'reply_status__24': 'pending', 'action_items_json__24': None, 'summarized_body__24': None, 'suggested_reply__24': None, 'reply_body__24': None, 'calendar_event_detected__24': False, 'message_time__24': None, 'updated_at__24': datetime.datetime(2026, 7, 6, 16, 14, 6, 261632), 'skip_reason__24': None, 'calendar_event_title__24': None, 'llm_reply_tokens_output__24': None, 'calendar_notification_sent__24': False, 'message_date__24': None, 'calendar_notification_at__24': None, 'calendar_event_end_at__24': None, 'user_id__24': 1}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

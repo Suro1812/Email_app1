@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f230e0c193a8e4",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Gateway Hotels <offers@ihcltata.com>\nTo: surojitdutta1812@gmail.com\nDate: Thu, 02 Jul 2026 19:09:11 +0530\nSubject: <external_source>Gateway Vistas: Thoughtful Stays, Memorable Experiences</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 2 Jul 2026 07:09 PM\nsender: Gateway Hotels\ncontent: <external_source>Offer valid for bookings and stay until 31st March 2027. Add ihcltata.com to the &quot;safe list&quot; | View on Web Toll Free: 1 800 111 825 • Email: reservations@ihcltata.com • Web: www.gatewayhotels.com This email was sent by The Indian Hotels Company Limited, Express Towers, Nariman Point, Mumbai 400 021, India. Privacy Policy | Unsubscribe</external_source>\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 2 Jul 2026 07:09 PM\nsender: Gateway Hotels\ncontent: <external_source>Offer valid for bookings and stay until 31st March 2027. Add ihcltata.com to the &quot;safe list&quot; | View on Web Toll Free: 1 800 111 825 • Email: reservations@ihcltata.com • Web: www.gatewayhotels.com This email was sent by The Indian Hotels Company Limited, Express Towers, Nariman Point, Mumbai 400 021, India. Privacy Policy | Unsubscribe</external_source>\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "Thu, 02 Jul 2026 19:09:11 +0530",
+        "sender": "Gateway Hotels <offers@ihcltata.com>",
+        "body": "<external_source>Offer valid for bookings and stay until 31st March 2027. Add ihcltata.com to the &quot;safe list&quot; | View on Web Toll Free: 1 800 111 825 • Email: reservations@ihcltata.com • Web: www.gatewayhotels.com This email was sent by The Indian Hotels Company Limited, Express Towers, Nariman Point, Mumbai 400 021, India. Privacy Policy | Unsubscribe</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Gateway Hotels (offers@ihclata.com), Thu Jul 02, 2026 at 7:09 PM: Announced a promotional offer valid for bookings and stays until March 31st, 2027. Advised adding ihcltata.com to the \"safe list\" and provided contact details (Toll Free: 1-800-111-825; Email: reservations@ihcltata.com) along with their website (www.gatewayhotels.com).\n\nPrevious messages:\n- None.\n\nUser action:\n- No clear user action requested.\n\nNotes:\n- The offer is valid through March 31st, 2027."
+  }
+}

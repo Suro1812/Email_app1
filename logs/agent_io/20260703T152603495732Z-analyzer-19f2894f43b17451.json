@@ -1,0 +1,51 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19f2894f43b17451"
+  ],
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-03T15:25:58\n\nMessage 1\nDate: Fri, 3 Jul 2026 20:54:26 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Update Regarding Your Medicine Order</external_source>\nMessage_body: <external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>\nStructured_thread: Current message:\ndatetime: 3 Jul 2026 08:54 PM\nsender: Surojit D\ncontent: <external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19f2894f43b17451",
+        "thread_id": "19f2894f43b17451",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "subject": "<external_source>Update Regarding Your Medicine Order</external_source>",
+        "date": "Fri, 3 Jul 2026 20:54:26 +0530",
+        "snippet": "<external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify</external_source>",
+        "body": "<external_source>Dear Customer, We regret to inform you that one of the medicines in your recent prescription is currently unavailable. Our supplier expects fresh stock within the next three days. We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician. Please let us know your preference. Regards, HealthPlus Pharmacy</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 56,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><p class=\"gmail-PDq2pG_selectionAnchorContainer\"><span style=\"background-color:transparent\">Dear Customer,</span></p>\n<p>We regret to inform you that one of the medicines in your recent prescription is currently unavailable.</p>\n<p>Our supplier expects fresh stock within the next three days.</p>\n<p>We can either notify you once it arrives or suggest an equivalent generic alternative after consulting your physician.</p>\n<p>Please let us know your preference.</p>\n<p>Regards,<br/>\r\nHealthPlus Pharmacy</p></div>",
+        "display_text": "Dear Customer,\r\n\r\nWe regret to inform you that one of the medicines in your recent\r\nprescription is currently unavailable.\r\n\r\nOur supplier expects fresh stock within the next three days.\r\n\r\nWe can either notify you once it arrives or suggest an equivalent generic\r\nalternative after consulting your physician.\r\n\r\nPlease let us know your preference.\r\n\r\nRegards,\r\nHealthPlus Pharmacy",
+        "has_display_html": true
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "priority=medium; event_title=<none>; event_start=<none>; event_end=<none>; event_location=<none>",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "medium"
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "medium"
+        }
+      ]
+    }
+  }
+}

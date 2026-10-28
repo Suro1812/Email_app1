@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f49e88cc93aa39",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Surojit D <surojitdutta181993@gmail.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Fri, 10 Jul 2026 08:13:13 +0530\nSubject: <external_source>Doctors appointment</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 10 Jul 2026 08:13 AM\nsender: Surojit D\ncontent: <external_source>Hello , I booked a doctors appointment at manipal hospital tomorrow at 5pm be ready by 3pm i will pick you up. With regards, Surojit dutta</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 10 Jul 2026 08:13 AM\nsender: Surojit D\ncontent: <external_source>Hello , I booked a doctors appointment at manipal hospital tomorrow at 5pm be ready by 3pm i will pick you up. With regards, Surojit dutta</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 10 Jul 2026 08:13:13 +0530",
+        "sender": "Surojit D <surojitdutta181993@gmail.com>",
+        "body": "<external_source>Hello , I booked a doctors appointment at manipal hospital tomorrow at 5pm be ready by 3pm i will pick you up. With regards, Surojit dutta</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From `Surojit D`, Fri Jul 10, 2026 08:13 AM: The sender booked a doctor's appointment at Manipal Hospital for tomorrow (Saturday) at 5 PM and requested the recipient to be ready by 3 PM so they can pick them up."
+  }
+}

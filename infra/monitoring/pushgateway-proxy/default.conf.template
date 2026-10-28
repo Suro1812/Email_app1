@@ -1,0 +1,20 @@
+# Sits between ngrok (public internet) and Pushgateway (internal-only).
+# ${PUSHGATEWAY_AUTH_TOKEN} is substituted at container start by nginx's
+# built-in envsubst-on-templates entrypoint (official nginx image, config
+# placed under /etc/nginx/templates/).
+#
+# Local Prometheus scrapes Pushgateway directly on the docker network and
+# never goes through this proxy — only traffic arriving via the ngrok tunnel
+# does, which is why only this hop needs the token check.
+server {
+    listen 9091;
+
+    location / {
+        if ($http_authorization != "Bearer ${PUSHGATEWAY_AUTH_TOKEN}") {
+            return 401 "missing or invalid bearer token\n";
+        }
+        proxy_pass http://pushgateway:9091;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}

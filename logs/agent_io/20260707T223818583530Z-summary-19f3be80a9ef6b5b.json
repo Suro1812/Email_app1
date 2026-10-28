@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f3be80a9ef6b5b",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: StarHealth <hello@getujobs.com>\nTo: surojitdutta1812@gmail.com\nDate: Tue, 07 Jul 2026 09:28:09 +0000\nSubject: <external_source>Welcome to StarHealth</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 7 Jul 2026 09:28 AM\nsender: StarHealth\ncontent: <external_source>![View your policy update](https://images.v3cars.in/mails/UR/star5443.jpg)</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 7 Jul 2026 09:28 AM\nsender: StarHealth\ncontent: <external_source>![View your policy update](https://images.v3cars.in/mails/UR/star5443.jpg)</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Tue, 07 Jul 2026 09:28:09 +0000",
+        "sender": "StarHealth <hello@getujobs.com>",
+        "body": "<external_source>![View your policy update](https://images.v3cars.in/mails/UR/star5443.jpg)</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From `StarHealth`, 7 Jul 2026 at 9:28 AM: The sender shared a policy update via an image link titled \"View your policy update\" hosted on images.v3cars.in. No specific text content or action was requested in the email body beyond this attachment reference.\n\nPrevious messages:\n- (None)"
+  }
+}

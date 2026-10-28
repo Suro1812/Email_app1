@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f380ced5a2751e",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Payments <no-reply@razorpay.com>\nTo: surojitdutta1812@gmail.com\nDate: Mon, 6 Jul 2026 15:29:58 +0000\nSubject: <external_source>Payment successful for NOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 6 Jul 2026 03:29 PM\nsender: Payments\ncontent: <external_source>NOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\n₹ 2,938 .90\nPaid Successfully\nPayment Id\npay_TAGbIpxsOwqo8q\nMethod\nupi\nsurojitdutta1812-1@okhdfcbank\nPaid On\n06 Jul, 2026 08:59:35 PM IST\nEmail\nsurojitdutta1812@gmail.com\nMobile Number\n8235041679\nFor any order related queries please reach out to\nNOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\nPlease report this payment if you find it to be suspicious\nor fraudulent\nReport Payment\nPowered By</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 6 Jul 2026 03:29 PM\nsender: Payments\ncontent: <external_source>NOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\n₹ 2,938 .90\nPaid Successfully\nPayment Id\npay_TAGbIpxsOwqo8q\nMethod\nupi\nsurojitdutta1812-1@okhdfcbank\nPaid On\n06 Jul, 2026 08:59:35 PM IST\nEmail\nsurojitdutta1812@gmail.com\nMobile Number\n8235041679\nFor any order related queries please reach out to\nNOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\nPlease report this payment if you find it to be suspicious\nor fraudulent\nReport Payment\nPowered By</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Mon, 6 Jul 2026 15:29:58 +0000",
+        "sender": "Payments <no-reply@razorpay.com>",
+        "body": "<external_source>NOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\n₹ 2,938 .90\nPaid Successfully\nPayment Id\npay_TAGbIpxsOwqo8q\nMethod\nupi\nsurojitdutta1812-1@okhdfcbank\nPaid On\n06 Jul, 2026 08:59:35 PM IST\nEmail\nsurojitdutta1812@gmail.com\nMobile Number\n8235041679\nFor any order related queries please reach out to\nNOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED\nPlease report this payment if you find it to be suspicious\nor fraudulent\nReport Payment\nPowered By</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Payments, 6 Jul 2026 at 15:29 PM (paid on 08:59 AM IST): NOBROKER TECHNOLOGIES SOLUTIONS PRIVATE LIMITED successfully paid ₹2,938.90 via UPI from surojitdutta1812-1@okhdfcbank using mobile number 8235041679. The payment ID is pay_TAGbIpxsOwqo8q."
+  }
+}

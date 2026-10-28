@@ -1,0 +1,163 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "1a02e0389a97cce8",
+    "1a029f06b88725c0"
+  ],
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-08-23T10:05:41\n\nMessage 1\nDate: Sun, 23 Aug 2026 15:16:07 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Meeting Scheduled – August 25, 2026</external_source>\nExtracted_date_time_expressions: [\"August 25, 2026\", \"tomorrow\", \"5:00 PM\"]\nMessage_body: <external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>\nStructured_thread: Current message:\ndatetime: 23 Aug 2026 03:16 PM\nsender: Surojit D\ncontent: <external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>\n\nMessage 2\nDate: Sat, 22 Aug 2026 20:16:45 +0530\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nFrom: Surojit D <surojitdutta181993@gmail.com>\nSubject: <external_source>Meeting tomorrow</external_source>\nExtracted_date_time_expressions: [\"tomorrow\", \"5:00 PM\"]\nMessage_body: <external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>\nStructured_thread: Current message:\ndatetime: 22 Aug 2026 08:16 PM\nsender: Surojit D\ncontent: <external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>\n\nOutput instructions:\nReturn JSON only. Do not include markdown, reasoning, labels, or tool calls.\nReturn one object with a messages array, in the same order as the input messages.\nEach item in messages must follow this schema exactly:\n{\n  \"category\": \"calendar_event | reminder | none\",\n  \"event_type\": \"meeting | appointment | interview | travel | reservation | webinar | deadline | task_reminder | follow_up | payment | renewal | other | none\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"start_date\": \"\",\n  \"start_time\": null,\n  \"end_date\": null,\n  \"end_time\": null,\n  \"location\": null,\n  \"participants\": [],\n  \"meeting_platform\": null,\n  \"requires_confirmation\": false,\n  \"confidence\": 0.0,\n  \"reason\": \"\"\n}\n\nYou are an Event and Reminder Analyzer.\n\nYour job is to determine whether an email contains an actionable item for the email recipient.\n\nThe input email has already passed a rule-based filter and contains one or more detected date/time expressions.\n\nThe detected expressions are provided in Extracted_date_time_expressions for each message.\n\nYour responsibilities are:\n\n1. Identify which extracted date(s) and time(s) actually belong to an actionable item.\n\nIgnore dates that refer to:\n- historical events\n- payment history\n- publication dates\n- previous meetings\n- examples\n- unrelated future dates\n- expiry dates unless they require user action\n\n2. Classify the actionable item.\n\nChoose exactly one category.\n\nAlso choose exactly one event_type from: meeting, appointment, interview, travel, reservation, webinar, deadline, task_reminder, follow_up, payment, renewal, other, none.\n\nUse event_type none only when category is none. For reminders, use the most specific reminder type, such as deadline, payment, renewal, follow_up, or task_reminder. For calendar events, use the most specific attendance type, such as meeting, interview, appointment, travel, reservation, or webinar.\n\nA. CALENDAR_EVENT\n\nChoose this if the user is expected to attend something at a specific date/time.\n\nIf the email asks to plan, schedule, attend, join, or arrange a meeting/event on a date but the time is missing, still choose calendar_event and set requires_confirmation to true.\n\nUse date-only meeting or planning asks as planned event reminders. They should appear on the calendar date but must not be treated as confirmed timed calendar blocks.\n\nOnly messages with a concrete invite, .ics/calendar details, or explicit date and time should become confirmed timed calendar events.\n\nExamples:\n- Meeting\n- Interview\n- Doctor appointment\n- Conference\n- Webinar\n- Flight\n- Hotel check-in\n- Restaurant reservation\n- Official calendar invitation\n- Zoom/Google Meet/Teams meeting\n- Physical meeting\n\nB. REMINDER\n\nChoose this if the user must remember to perform an action but there is no scheduled event requiring attendance.\n\nBecause the message already contains a detected date/time expression, choose reminder for date/time-related items that may require user attention and are not calendar events.\n\nExamples:\n- Pay invoice\n- Submit report\n- Renew insurance\n- Complete assignment\n- Send documents\n- Follow up\n- Call customer\n- Buy groceries\n\nC. NONE\n\nChoose NONE if no actionable reminder or event exists.\n\nKeep NONE for historical dates, payment history, FYI/news/general announcements, and dates that do not require future user attention.\n\nExamples:\n- News\n- Advertisements\n- FYI emails\n- Historical references\n- General announcements\n\n3. If multiple dates exist:\n\nDetermine which date belongs to the actionable item.\n\nIgnore dates that merely describe:\n- unavailable dates\n- previous events\n- alternative examples\n- historical references\n\n4. Determine whether user confirmation is required.\n\nConfirmation should be true when:\n- date missing\n- time missing\n- multiple possible dates\n- ambiguous wording\n- confidence is low\n\n5. Never invent missing information.\n\nIf time is missing, set start_time to null.\nIf end time is unknown, set end_time to null.\nIf location is unknown, set location to null.\nUse lowercase category values only: calendar_event, reminder, none.\nUse ISO date format YYYY-MM-DD and 24-hour time format HH:MM:SS when known.\nFor reminders, extract the exact due date and due time when present so code can create a reminder event on the calendar; if only a date is present, set start_time to null.\nUse the email received Date only to resolve relative phrases in the content, such as today, tomorrow, or 3 hours left.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "1a02e0389a97cce8",
+        "thread_id": "1a02e0389a97cce8",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "cc": "",
+        "bcc": "",
+        "subject": "<external_source>Meeting Scheduled – August 25, 2026</external_source>",
+        "date": "Sun, 23 Aug 2026 15:16:07 +0530",
+        "snippet": "<external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>",
+        "body": "<external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 23,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><div class=\"gmail-gE gmail-iv gmail-gt\" style='font-size:0.875rem;padding:20px 0px 0px;font-family:\"Google Sans\",Roboto,RobotoDraft,Helvetica,Arial,sans-serif'><span style=\"font-family:Arial,Helvetica,sans-serif;font-size:small;background-color:transparent\">Hi,</span></div><div class=\"gmail-\" style='font-family:\"Google Sans\",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:medium'><div class=\"gmail-ii gmail-gt\" id=\"gmail-:11g\" style=\"direction:ltr;margin:8px 0px 0px;padding:0px;font-size:0.875rem;overflow-x:hidden\"><div class=\"gmail-a3s gmail-aiL\" id=\"gmail-:11f\" style=\"direction:ltr;font-style:normal;font-variant:normal;font-size-adjust:none;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;font-size:small;line-height:1.5;font-family:Arial,Helvetica,sans-serif;overflow:auto hidden\"><div id=\"gmail-avWBGd-18\"><div dir=\"ltr\"><p>Can we meet tomorrow at 5:00 PM to discuss this?</p><p>Please let me know if that time works for you.</p><p>Thanks,<br/>Surojit</p></div></div></div></div></div></div>",
+        "display_text": "Hi,\r\n\r\nCan we meet tomorrow at 5:00 PM to discuss this?\r\n\r\nPlease let me know if that time works for you.\r\n\r\nThanks,\r\nSurojit",
+        "has_display_html": true,
+        "extracted_date_time_expressions": [
+          "August 25, 2026",
+          "tomorrow",
+          "5:00 PM"
+        ]
+      },
+      {
+        "id": "1a029f06b88725c0",
+        "thread_id": "1a029f06b88725c0",
+        "from": "Surojit D <surojitdutta181993@gmail.com>",
+        "to": "Surojit Dutta <surojitdutta1812@gmail.com>",
+        "cc": "",
+        "bcc": "",
+        "subject": "<external_source>Meeting tomorrow</external_source>",
+        "date": "Sat, 22 Aug 2026 20:16:45 +0530",
+        "snippet": "<external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>",
+        "body": "<external_source>Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 23,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<div dir=\"ltr\"><div class=\"gmail-gE gmail-iv gmail-gt\" style='font-size:0.875rem;padding:20px 0px 0px;font-family:\"Google Sans\",Roboto,RobotoDraft,Helvetica,Arial,sans-serif'><br/></div><div id=\"gmail-:11d\" style='font-family:\"Google Sans\",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:medium'><div id=\"gmail-:11e\"><div class=\"gmail-KKSLrd\"></div><div class=\"gmail-qQVYZb\"></div></div><div class=\"gmail-utdU2e\" id=\"gmail-avWBGd-14\"></div><div class=\"gmail-wl4W9b\" style=\"display:flex\"></div></div><div class=\"gmail-\" style='font-family:\"Google Sans\",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:medium'><div class=\"gmail-aHl\" id=\"gmail-avWBGd-15\" style=\"\"></div><div id=\"gmail-:11o\" tabindex=\"-1\"></div><div class=\"gmail-ii gmail-gt\" id=\"gmail-:11g\" style=\"direction:ltr;margin:8px 0px 0px;padding:0px;font-size:0.875rem;overflow-x:hidden\"><div class=\"gmail-a3s gmail-aiL\" id=\"gmail-:11f\" style=\"direction:ltr;font-style:normal;font-variant:normal;font-size-adjust:none;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;font-size:small;line-height:1.5;font-family:Arial,Helvetica,sans-serif;overflow:auto hidden\"><div id=\"gmail-avWBGd-18\"><div dir=\"ltr\"><p>Hi,</p><p>Can we meet tomorrow at 5:00 PM to discuss this?</p><p>Please let me know if that time works for you.</p><p>Thanks,<br/>Surojit</p></div></div></div></div></div></div>",
+        "display_text": "Hi,\r\n\r\nCan we meet tomorrow at 5:00 PM to discuss this?\r\n\r\nPlease let me know if that time works for you.\r\n\r\nThanks,\r\nSurojit",
+        "has_display_html": true,
+        "extracted_date_time_expressions": [
+          "tomorrow",
+          "5:00 PM"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"meeting\",\n      \"title\": \"Meeting Scheduled – August 25, 2026\",\n      \"description\": \"Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit\",\n      \"start_date\": \"2026-08-25\",\n      \"start_time\": \"17:00:00\",\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": true,\n      \"confidence\": 0.95,\n      \"reason\": \"Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 23), asking for confirmation.\"\n    },\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"meeting\",\n      \"title\": \"Meeting tomorrow\",\n      \"description\": \"Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit\",\n      \"start_date\": \"2026-08-23\",\n      \"start_time\": \"17:00:00\",\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": true,\n      \"confidence\": 0.95,\n      \"reason\": \"Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 22).\"\n    }\n  ]\n}",
+    "parsed": {
+      "messages": [
+        {
+          "category": "calendar_event",
+          "event_type": "meeting",
+          "title": "Meeting Scheduled – August 25, 2026",
+          "description": "Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit",
+          "start_date": "2026-08-25",
+          "start_time": "17:00:00",
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.95,
+          "reason": "Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 23), asking for confirmation."
+        },
+        {
+          "category": "calendar_event",
+          "event_type": "meeting",
+          "title": "Meeting tomorrow",
+          "description": "Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit",
+          "start_date": "2026-08-23",
+          "start_time": "17:00:00",
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.95,
+          "reason": "Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 22)."
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "category": "calendar_event",
+          "event_type": "meeting",
+          "title": "Meeting Scheduled – August 25, 2026",
+          "description": "Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit",
+          "start_date": "2026-08-25",
+          "start_time": "17:00:00",
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.95,
+          "reason": "Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 23), asking for confirmation.",
+          "calendar_event": {
+            "detected": true,
+            "title": "Meeting Scheduled – August 25, 2026",
+            "start_at": "2026-08-25T17:00:00",
+            "end_at": null,
+            "location": "",
+            "notification_minutes_before": 15,
+            "event_kind": "meeting"
+          }
+        },
+        {
+          "category": "calendar_event",
+          "event_type": "meeting",
+          "title": "Meeting tomorrow",
+          "description": "Hi, Can we meet tomorrow at 5:00 PM to discuss this? Please let me know if that time works for you. Thanks, Surojit",
+          "start_date": "2026-08-23",
+          "start_time": "17:00:00",
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": true,
+          "confidence": 0.95,
+          "reason": "Email proposes a specific meeting time (tomorrow at 5:00 PM) relative to the received date (Aug 22).",
+          "calendar_event": {
+            "detected": true,
+            "title": "Meeting tomorrow",
+            "start_at": "2026-08-23T17:00:00",
+            "end_at": null,
+            "location": "",
+            "notification_minutes_before": 15,
+            "event_kind": "meeting"
+          }
+        }
+      ]
+    }
+  }
+}

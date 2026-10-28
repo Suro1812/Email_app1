@@ -1,0 +1,22 @@
+# Garage server config. Deliberately contains NO secrets — garage's own CLI
+# reads rpc_secret and admin.admin_token from environment variables instead
+# (GARAGE_RPC_SECRET / GARAGE_ADMIN_TOKEN, confirmed via `garage --help`),
+# overriding whatever is or isn't set here. Those two env vars are supplied
+# by docker-compose.langfuse.yml, sourced from .env — never written into
+# this file. That's what makes this file safe to commit as-is.
+metadata_dir = "/data/meta"
+data_dir = "/data/data"
+db_engine = "sqlite"
+
+replication_factor = 1
+
+rpc_bind_addr = "[::]:3901"
+rpc_public_addr = "garage:3901"
+
+[s3_api]
+s3_region = "garage"
+api_bind_addr = "[::]:3900"
+root_domain = ".s3.garage.localhost"
+
+[admin]
+api_bind_addr = "[::]:3903"

@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f23371306d9062",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "You are summarizing a Gmail thread.\n\nRead the email thread and convert it into structured conversation history.\n\nRules for understanding the thread:\n- Order messages chronologically, oldest first.\n- Extract sender, datetime, and the main action/request.\n- Ignore quoted headers, HTML entities, greetings, and signatures.\n- Do not merge messages.\n\nUse this structure mentally:\nCurrent message:\nsender: ...\ncontent: Summarized content\n\nPrevious messages:\n1. datetime | sender | Summarized action\n2. datetime | sender | Summarized action\n3. datetime | sender | Summarized action\n\nRules:\n- Use only the thread messages given below.\n- Treat the newest thread message as the current/latest email.\n- Treat earlier thread messages as previous messages.\n- Do not guess sender names.\n- Do not reverse who said what.\n- Summarize chronologically from oldest to newest.\n- Mention the current/latest request separately at the end.\n- Do not include quoted headers, signatures, or raw email text.\n- Do not invent actions, commitments, dates, project details, or future actions.\n- Cover all meaningful details from the message and thread, including dates, deadlines, names, companies, locations, amounts, status changes, options, requirements, links, and requested actions when they matter.\n- Write a fuller summary body, not a compact one-line summary. Use multiple sentences or paragraphs when needed, while staying factual and readable.\n- Do not omit useful details just to keep the summary short.\n\nFrom: Naukri <info@naukri.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Thu, 2 Jul 2026 19:53:57 +0530 (IST)\nSubject: <external_source>Status of your job application has changed</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 2 Jul 2026 07:53 PM\nsender: Naukri\ncontent: <external_source>The status of your job application on Naukri.com has been updated</external_source>\n\nPrevious messages: None\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 2 Jul 2026 07:53 PM\nsender: Naukri\ncontent: <external_source>The status of your job application on Naukri.com has been updated</external_source>\n\nPrevious messages: None",
+    "raw_thread_messages": [
+      {
+        "datetime": "Thu, 2 Jul 2026 19:53:57 +0530 (IST)",
+        "sender": "Naukri <info@naukri.com>",
+        "body": "<external_source>The status of your job application on Naukri.com has been updated</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "On July 2, 2026 at 7:53 PM IST, Naukri sent a notification email to Surojit Dutta informing him that the status of his job application on their website had been updated. The message served as an external source alert regarding changes in progress for the specific role applied through Naukri.com."
+  }
+}

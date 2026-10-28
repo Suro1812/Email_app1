@@ -1,0 +1,15 @@
+{
+  "agent": "writer",
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "Write a new Gmail compose draft in plain text only. Use a informal format. Follow User_writing_instruction closely. Use To and Subject only as context. Do not invent facts, attachments, payments, project details, calendar availability, or commitments that are not provided by the user. If the instruction is too vague to safely write a complete message, write a concise draft that asks for the missing details. Return only the email body. Do not return JSON, labels, subject, reasoning, markdown, or tool calls.\n\nWriting_format: informal\nTo: \nSubject: \nUser_writing_instruction: Hi Rahuk, need to check foe meeting slot tomorrow? had dinner. lets join tomorrow evening with alan",
+    "to": "",
+    "subject": "",
+    "user_writing_instruction": "Hi Rahuk, need to check foe meeting slot tomorrow? had dinner. lets join tomorrow evening with alan",
+    "writing_format": "informal"
+  },
+  "output": {
+    "draft": "Hey Rahuk,\n\nNeed to check for a meeting slot tomorrow? Had dinner last night, so let's join tomorrow evening with Alan.\n\nHope that works for you!\n\nCheers,\n[Your Name]",
+    "format": "informal"
+  }
+}

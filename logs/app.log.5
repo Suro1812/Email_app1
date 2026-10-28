@@ -1,0 +1,249 @@
+2026-07-25 09:44:46,790 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column email_message_reminders.calendar_event_source does not exist
+LINE 1: ... email_message_reminders_calendar_event_location, email_mess...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 369, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 193, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 184, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 66, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 362, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 336, in _save_with_user
+    record = _get_or_create_message_record(db, user, message_id)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 299, in _get_or_create_message_record
+    db.query(EmailMessageReminder)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlmodel/orm/session.py", line 142, in execute
+    return super().execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2373, in execute
+    return self._execute_internal(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column email_message_reminders.calendar_event_source does not exist
+LINE 1: ... email_message_reminders_calendar_event_location, email_mess...
+                                                             ^
+
+[SQL: SELECT email_message_reminders.id AS email_message_reminders_id, email_message_reminders.message_id AS email_message_reminders_message_id, email_message_reminders.summarized_subject AS email_message_reminders_summarized_subject, email_message_reminders.summarized_body AS email_message_reminders_summarized_body, email_message_reminders.message_date AS email_message_reminders_message_date, email_message_reminders.message_time AS email_message_reminders_message_time, email_message_reminders.reply_subject AS email_message_reminders_reply_subject, email_message_reminders.reply_body AS email_message_reminders_reply_body, email_message_reminders.user_id AS email_message_reminders_user_id, email_message_reminders.from_address AS email_message_reminders_from_address, email_message_reminders.to_address AS email_message_reminders_to_address, email_message_reminders.processing_status AS email_message_reminders_processing_status, email_message_reminders.skip_reason AS email_message_reminders_skip_reason, email_message_reminders.detected_intent AS email_message_reminders_detected_intent, email_message_reminders.action_items_json AS email_message_reminders_action_items_json, email_message_reminders.deadline AS email_message_reminders_deadline, email_message_reminders.reply_needed AS email_message_reminders_reply_needed, email_message_reminders.reply_status AS email_message_reminders_reply_status, email_message_reminders.suggested_reply AS email_message_reminders_suggested_reply, email_message_reminders.llm_summary_tokens_input AS email_message_reminders_llm_summary_tokens_input, email_message_reminders.llm_summary_tokens_output AS email_message_reminders_llm_summary_tokens_output, email_message_reminders.llm_reply_tokens_input AS email_message_reminders_llm_reply_tokens_input, email_message_reminders.llm_reply_tokens_output AS email_message_reminders_llm_reply_tokens_output, email_message_reminders.prompt_cache_hit AS email_message_reminders_prompt_cache_hit, email_message_reminders.calendar_event_detected AS email_message_reminders_calendar_event_detected, email_message_reminders.calendar_event_title AS email_message_reminders_calendar_event_title, email_message_reminders.calendar_event_start_at AS email_message_reminders_calendar_event_start_at, email_message_reminders.calendar_event_end_at AS email_message_reminders_calendar_event_end_at, email_message_reminders.calendar_event_location AS email_message_reminders_calendar_event_location, email_message_reminders.calendar_event_source AS email_message_reminders_calendar_event_source, email_message_reminders.calendar_event_uid AS email_message_reminders_calendar_event_uid, email_message_reminders.calendar_event_organizer AS email_message_reminders_calendar_event_organizer, email_message_reminders.calendar_event_status AS email_message_reminders_calendar_event_status, email_message_reminders.calendar_notification_at AS email_message_reminders_calendar_notification_at, email_message_reminders.calendar_notification_sent AS email_message_reminders_calendar_notification_sent, email_message_reminders.created_at AS email_message_reminders_created_at, email_message_reminders.updated_at AS email_message_reminders_updated_at 
+FROM email_message_reminders 
+WHERE email_message_reminders.user_id = %(user_id_1)s AND email_message_reminders.message_id = %(message_id_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'user_id_1': 1, 'message_id_1': '19f975cc7219a633', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-07-25 09:44:46,807 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[2c7cb4f8-3fa8-4c91-8127-c2b9d0bd1f5e] retry: Retry in 60s: ProgrammingError('(psycopg2.errors.UndefinedColumn) column email_message_reminders.calendar_event_source does not exist\nLINE 1: ... email_message_reminders_calendar_event_location, email_mess...\n                                                             ^\n')
+2026-07-25 09:44:53,456 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:44:54,891 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:44:56,306 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:44:57,658 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:44:59,145 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:00,541 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:01,956 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:03,343 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:04,868 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:06,276 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:07,649 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:45:09,698 INFO [ForkPoolWorker-4] openai._base_client: Retrying request to /chat/completions in 0.484907 seconds
+2026-07-25 09:48:42,691 INFO [ForkPoolWorker-4] httpx: HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-25 09:48:42,745 INFO [ForkPoolWorker-4] app.agent.orchestrator: model_call_completed {"skill_name": "analyzer_agent", "model": "qwen3.5:9b-q8_0", "base_url": "http://localhost:11434/v1", "latency_ms": 213047.61, "output": {"text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"interview\",\n      \"title\": \"Walk-in Interview - Data Scientist at Tata Consultancy Services\",\n      \"description\": \"Attend the walk-in job interview for Data Scientist role. Tips provided on preparation.\",\n      \"start_date\": \"2026-07-25\",\n      \"start_time\": \"09:00:00\",\n      \"end_date\": \"2026-07-25\",\n      \"end_time\": \"12:00:00\",\n      \"location\": \"TCS Chennai Office\",\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.98,\n      \"reason\": \"The email explicitly invites the user to attend a specific walk-in interview with defined date and time (2026-7-25 from 9:00 AM to 12:00 PM) at a physical location.\"\n    },\n    {\n      \"category\": \"none\",\n      \"event_type\": \"none\",\n      \"title\": \"\",\n      \"description\": \"\",\n      \"start_date\": \"\",\n      \"start_time\": null,\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.95,\n      \"reason\": \"The email contains a relative date expression 'this week' but provides no specific actionable event or deadline requiring immediate user attention beyond general job recommendations.\"\n    }\n  ]\n}"}}
+2026-07-25 09:48:42,769 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:48:42,771 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:48:42,869 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[673752d3-185a-4e31-890f-53b39878b94e] succeeded in 236.05369324999992s: {'email': 'surojitdutta1812@gmail.com', 'messages': [{'id': '19f975cc7219a633', 'thread_id': '19f975cc7219a633', 'from': 'Magicbricks <prop@magicbricks.com>', 'to': 'surojitdutta1812@gmail.com', 'subject': '<external_source>LAXMI has shared 2 BHK for 32.0 Lac</external_source>', 'date': 'Sat, 25 Jul 2026 09:11:06 +0530 (IST)', 'snippet': '<external_source>Hi surojit, Here are Flats matching your requirements Rs. 32.0 Lac 2 BHK Flat in , Bangalore Super Area 815 Sq-ft Possession Ready to Move View Details Get Number Rs. 28.0 Lac 1 BHK Flat Pashmina</external_source>', 'body': '<external_source>Hi surojit,
+Here are Flats matching your requirements
+Rs. 32.0 Lac 2 BHK Flat
+in , Bangalore
+Super Area
+815 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 28.0 Lac 1 BHK Flat
+Pashmina Brookwoods in Budigere, Bangalore
+Super Area
+550 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 32.0 Lac 1 BHK Flat
+Time and Space Infinity in Kannamangala, Bangalore
+Super Area
+700 Sq-ft
+Possession
+Ready to...', 'thr...', ...}]}
+2026-07-25 09:48:45,697 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:47,956 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:49,736 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:51,271 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:53,524 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:54,898 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:56,221 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:57,824 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:48:59,351 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:49:01,511 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:49:02,923 INFO [ForkPoolWorker-4] openai._base_client: Retrying request to /chat/completions in 0.403794 seconds
+2026-07-25 09:52:11,535 INFO [ForkPoolWorker-4] httpx: HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-25 09:52:11,577 INFO [ForkPoolWorker-4] app.agent.orchestrator: model_call_completed {"skill_name": "analyzer_agent", "model": "qwen3.5:9b-q8_0", "base_url": "http://localhost:11434/v1", "latency_ms": 188653.48, "output": {"text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"interview\",\n      \"title\": \"Walk-in Interview - Data Scientist at TCS Chennai Office\",\n      \"description\": \"Attend the walk-in job interview for the Data Scientist position. Tips provided on preparation, nonverbal communication, and company research.\",\n      \"start_date\": \"2026-07-25\",\n      \"start_time\": \"09:00:00\",\n      \"end_date\": \"2026-07-25\",\n      \"end_time\": \"12:00:00\",\n      \"location\": \"TCS Chennai Office\",\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.98,\n      \"reason\": \"The email explicitly invites the user to attend a walk-in interview on a specific date and time (Today/2026-7-25 from 9:00 AM - 12:00 PM) at a physical location.\"\n    },\n    {\n      \"category\": \"none\",\n      \"event_type\": \"none\",\n      \"title\": \"\",\n      \"description\": \"\",\n      \"start_date\": \"\",\n      \"start_time\": null,\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.95,\n      \"reason\": \"The email contains a relative date expression 'this week' referring to job recommendations based on the user's profile. It is an informational notification/advertisement without a specific actionable deadline or scheduled event requiring attendance.\"\n    }\n  ]\n}"}}
+2026-07-25 09:52:11,606 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:52:11,606 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:52:11,688 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[1b3d2175-e632-4d01-a36a-72bb168040a1] succeeded in 208.81228858400004s: {'email': 'surojitdutta1812@gmail.com', 'messages': [{'id': '19f97394267c5673', 'thread_id': '19f97394267c5673', 'from': 'reminder <reminder@naukri.com>', 'to': '"surojitdutta1812@gmail.com" <surojitdutta1812@gmail.com>', 'subject': '<external_source>Reminder: Don&#x27;t Forget to attend these Walk-in&#x27;s today</external_source>', 'date': 'Sat, 25 Jul 2026 08:32:17 +0530 (IST)', 'snippet': '<external_source>Reminder! Don&#x27;t forget to attend the walk-in job(s) you have applied to. Go through these tips to be prepared. naukri.com Get app Your walk-in reminder Data Scientist Tata Consultancy Services Date</external_source>', 'body': '<external_source>Reminder! Don’t forget to attend the walk-in job(s) you have applied to. Go through these tips to be prepared.
+Get app
+Your walk-in reminder
+Data Scientist
+Tata Consultancy Services
+Date &amp; time
+2026-7-25 - 2026-7-25, 9.00 AM - 12.00 PM
+Phone
+Location
+TCS Chennai Office
+Things to know before you go
+Interview guidance
+How to prepare for...', 'thread_messages...', ...}]}
+2026-07-25 09:52:12,014 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:13,582 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:15,069 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:16,689 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:18,205 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:20,225 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:21,664 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:22,961 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:24,444 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:25,936 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:27,347 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:52:28,755 INFO [ForkPoolWorker-4] openai._base_client: Retrying request to /chat/completions in 0.403830 seconds
+2026-07-25 09:55:48,751 INFO [ForkPoolWorker-4] httpx: HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-25 09:55:48,767 INFO [ForkPoolWorker-4] app.agent.orchestrator: model_call_completed {"skill_name": "analyzer_agent", "model": "qwen3.5:9b-q8_0", "base_url": "http://localhost:11434/v1", "latency_ms": 199984.79, "output": {"text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"interview\",\n      \"title\": \"Data Scientist - Tata Consultancy Services Walk-in Interview\",\n      \"description\": \"Walk-in interview for Data Scientist position at TCS Chennai Office. Time: 9:00 AM to 12:00 PM on July 25, 2026.\",\n      \"start_date\": \"2026-07-25\",\n      \"start_time\": \"09:00:00\",\n      \"end_date\": \"2026-07-25\",\n      \"end_time\": \"12:00:00\",\n      \"location\": \"TCS Chennai Office\",\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.98,\n      \"reason\": \"The email explicitly schedules a walk-in interview for today (2026-07-25) with specific start and end times (9:00 AM - 12:00 PM) at a physical location.\"\n    },\n    {\n      \"category\": \"none\",\n      \"event_type\": \"none\",\n      \"title\": \"\",\n      \"description\": \"\",\n      \"start_date\": \"\",\n      \"start_time\": null,\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.95,\n      \"reason\": \"The email is a general job recommendation alert ('Jobs you might have missed this week') without any specific date/time for an event or actionable task requiring immediate attention.\"\n    }\n  ]\n}"}}
+2026-07-25 09:55:48,772 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:55:48,772 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:55:48,840 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[e2be68e0-fc37-4f8e-a381-3e3ec38689f0] succeeded in 217.11893424999994s: {'email': 'surojitdutta1812@gmail.com', 'messages': [{'id': '19f975cc7219a633', 'thread_id': '19f975cc7219a633', 'from': 'Magicbricks <prop@magicbricks.com>', 'to': 'surojitdutta1812@gmail.com', 'subject': '<external_source>LAXMI has shared 2 BHK for 32.0 Lac</external_source>', 'date': 'Sat, 25 Jul 2026 09:11:06 +0530 (IST)', 'snippet': '<external_source>Hi surojit, Here are Flats matching your requirements Rs. 32.0 Lac 2 BHK Flat in , Bangalore Super Area 815 Sq-ft Possession Ready to Move View Details Get Number Rs. 28.0 Lac 1 BHK Flat Pashmina</external_source>', 'body': '<external_source>Hi surojit,
+Here are Flats matching your requirements
+Rs. 32.0 Lac 2 BHK Flat
+in , Bangalore
+Super Area
+815 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 28.0 Lac 1 BHK Flat
+Pashmina Brookwoods in Budigere, Bangalore
+Super Area
+550 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 32.0 Lac 1 BHK Flat
+Time and Space Infinity in Kannamangala, Bangalore
+Super Area
+700 Sq-ft
+Possession
+Ready to...', 'thr...', ...}]}
+2026-07-25 09:55:49,199 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:55:53,351 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:55:55,232 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:55:56,879 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:55:58,365 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:55:59,847 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:56:01,383 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:56:03,021 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:56:04,660 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:56:06,092 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:56:07,355 INFO [ForkPoolWorker-4] openai._base_client: Retrying request to /chat/completions in 0.419258 seconds
+2026-07-25 09:59:36,665 INFO [ForkPoolWorker-4] httpx: HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-25 09:59:36,692 INFO [ForkPoolWorker-4] app.agent.orchestrator: model_call_completed {"skill_name": "analyzer_agent", "model": "qwen3.5:9b-q8_0", "base_url": "http://localhost:11434/v1", "latency_ms": 209336.22, "output": {"text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"interview\",\n      \"title\": \"Walk-in Interview - Data Scientist at Tata Consultancy Services\",\n      \"description\": \"Attend the walk-in job interview for Data Scientist role at TCS Chennai Office.\",\n      \"start_date\": \"2026-07-25\",\n      \"start_time\": \"09:00:00\",\n      \"end_date\": \"2026-07-25\",\n      \"end_time\": \"12:00:00\",\n      \"location\": \"TCS Chennai Office\",\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.98,\n      \"reason\": \"The email explicitly invites the user to attend a specific walk-in interview with defined date and time (2026-07-25, 9:00 AM - 12:00 PM) at a physical location.\"\n    },\n    {\n      \"category\": \"none\",\n      \"event_type\": \"none\",\n      \"title\": \"\",\n      \"description\": \"\",\n      \"start_date\": \"\",\n      \"start_time\": null,\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.95,\n      \"reason\": \"The email contains a relative date expression 'this week' referring to job recommendations and general alerts. It does not specify a concrete future action item with a specific deadline or scheduled event requiring attendance.\"\n    }\n  ]\n}"}}
+2026-07-25 09:59:36,705 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:59:36,706 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 09:59:36,788 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[81badd4c-ac01-40e2-bc60-777533f90f2d] succeeded in 227.9410347500002s: {'email': 'surojitdutta1812@gmail.com', 'messages': [{'id': '19f97394267c5673', 'thread_id': '19f97394267c5673', 'from': 'reminder <reminder@naukri.com>', 'to': '"surojitdutta1812@gmail.com" <surojitdutta1812@gmail.com>', 'subject': '<external_source>Reminder: Don&#x27;t Forget to attend these Walk-in&#x27;s today</external_source>', 'date': 'Sat, 25 Jul 2026 08:32:17 +0530 (IST)', 'snippet': '<external_source>Reminder! Don&#x27;t forget to attend the walk-in job(s) you have applied to. Go through these tips to be prepared. naukri.com Get app Your walk-in reminder Data Scientist Tata Consultancy Services Date</external_source>', 'body': '<external_source>Reminder! Don’t forget to attend the walk-in job(s) you have applied to. Go through these tips to be prepared.
+Get app
+Your walk-in reminder
+Data Scientist
+Tata Consultancy Services
+Date &amp; time
+2026-7-25 - 2026-7-25, 9.00 AM - 12.00 PM
+Phone
+Location
+TCS Chennai Office
+Things to know before you go
+Interview guidance
+How to prepare for...', 'thread_messages...', ...}]}
+2026-07-25 09:59:40,277 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:42,060 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:43,589 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:45,440 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:47,078 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:49,847 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:51,378 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:53,017 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:54,566 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:56,100 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:57,931 INFO [ForkPoolWorker-4] google_auth_httplib2: Refreshing credentials due to a 401 response. Attempt 1/2.
+2026-07-25 09:59:59,209 INFO [ForkPoolWorker-4] openai._base_client: Retrying request to /chat/completions in 0.488980 seconds
+2026-07-25 10:05:41,944 INFO [ForkPoolWorker-4] httpx: HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-25 10:05:41,961 INFO [ForkPoolWorker-4] app.agent.orchestrator: model_call_completed {"skill_name": "analyzer_agent", "model": "qwen3.5:9b-q8_0", "base_url": "http://localhost:11434/v1", "latency_ms": 342748.84, "output": {"text": "{\n  \"messages\": [\n    {\n      \"category\": \"calendar_event\",\n      \"event_type\": \"interview\",\n      \"title\": \"Walk-in Interview - Data Scientist at TCS Chennai Office\",\n      \"description\": \"Attend the walk-in job interview for Data Scientist position. Tips provided on preparation.\",\n      \"start_date\": \"2026-07-25\",\n      \"start_time\": \"09:00:00\",\n      \"end_date\": \"2026-07-25\",\n      \"end_time\": \"12:00:00\",\n      \"location\": \"TCS Chennai Office\",\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.98,\n      \"reason\": \"The email explicitly invites the user to attend a walk-in interview on today (2026-07-25) between 9:00 AM and 12:00 PM at TCS Chennai Office.\"\n    },\n    {\n      \"category\": \"none\",\n      \"event_type\": \"none\",\n      \"title\": \"\",\n      \"description\": \"\",\n      \"start_date\": \"\",\n      \"start_time\": null,\n      \"end_date\": null,\n      \"end_time\": null,\n      \"location\": null,\n      \"participants\": [],\n      \"meeting_platform\": null,\n      \"requires_confirmation\": false,\n      \"confidence\": 0.95,\n      \"reason\": \"The email is a general job recommendation alert ('Jobs you might have missed this week') without specific dates or actionable tasks requiring attendance.\"\n    }\n  ]\n}"}}
+2026-07-25 10:05:42,069 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 10:05:42,074 INFO [ForkPoolWorker-4] app.agent.orchestrator: email_processing_decision
+2026-07-25 10:05:42,422 INFO [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[f92210ba-0b67-4d06-8195-b2c875d2b5a8] succeeded in 365.62370895799995s: {'email': 'surojitdutta1812@gmail.com', 'messages': [{'id': '19f975cc7219a633', 'thread_id': '19f975cc7219a633', 'from': 'Magicbricks <prop@magicbricks.com>', 'to': 'surojitdutta1812@gmail.com', 'subject': '<external_source>LAXMI has shared 2 BHK for 32.0 Lac</external_source>', 'date': 'Sat, 25 Jul 2026 09:11:06 +0530 (IST)', 'snippet': '<external_source>Hi surojit, Here are Flats matching your requirements Rs. 32.0 Lac 2 BHK Flat in , Bangalore Super Area 815 Sq-ft Possession Ready to Move View Details Get Number Rs. 28.0 Lac 1 BHK Flat Pashmina</external_source>', 'body': '<external_source>Hi surojit,
+Here are Flats matching your requirements
+Rs. 32.0 Lac 2 BHK Flat
+in , Bangalore
+Super Area
+815 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 28.0 Lac 1 BHK Flat
+Pashmina Brookwoods in Budigere, Bangalore
+Super Area
+550 Sq-ft
+Possession
+Ready to Move
+View Details
+Get Number
+Rs. 32.0 Lac 1 BHK Flat
+Time and Space Infinity in Kannamangala, Bangalore
+Super Area
+700 Sq-ft
+Possession
+Ready to...', 'thr...', ...}]}

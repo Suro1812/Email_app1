@@ -1,0 +1,12 @@
+{
+  "agent": "summary",
+  "message_id": "19eefbf5d663c830",
+  "model": "qwen2.5:7b-instruct",
+  "input": {
+    "prompt": "You are summarizing a Gmail thread.\n\nRead the email thread and convert it into structured conversation history.\n\nRules for understanding the thread:\n- Order messages chronologically, oldest first.\n- Extract sender, datetime, and the main action/request.\n- Ignore quoted headers, HTML entities, greetings, and signatures.\n- Do not merge messages.\n\nUse this structure mentally:\nCurrent message:\nsender: ...\ncontent: ...\n\nPrevious messages:\n1. datetime | sender | action\n2. datetime | sender | action\n3. datetime | sender | action\n\nRules:\n- Use only the thread messages given below.\n- Treat the newest thread message as the current/latest email.\n- Treat earlier thread messages as previous messages.\n- Do not guess sender names.\n- Do not reverse who said what.\n- Summarize chronologically from oldest to newest.\n- Mention the current/latest request separately at the end.\n- Do not include quoted headers, signatures, or raw email text.\n- Do not invent actions, commitments, dates, project details, or future actions.\n- Output 3-6 plain text sentences only.\n\nFrom: Surojit D <surojitdutta181993@gmail.com>\nTo: Surojit Dutta <surojitdutta1812@gmail.com>\nDate: Mon, 22 Jun 2026 20:02:24 +0530\nSubject: <external_source>Re: Check 7</external_source>\nEMAIL_THREAD_START\nThread message 1\ndatetime: 21 Jun 2026 01:05 PM\nsender: Surojit D\ncontent: \n\nThread message 2\ndatetime: 21 Jun 2026 03:38 AM\nsender: surojitdutta1812@gmail.com\ncontent: Surojit\n\nThread message 3\ndatetime: 22 Jun 2026 08:02 PM\nsender: Surojit D\ncontent: \nEMAIL_THREAD_END",
+    "thread_messages": "Thread message 1\ndatetime: 21 Jun 2026 01:05 PM\nsender: Surojit D\ncontent: \n\nThread message 2\ndatetime: 21 Jun 2026 03:38 AM\nsender: surojitdutta1812@gmail.com\ncontent: Surojit\n\nThread message 3\ndatetime: 22 Jun 2026 08:02 PM\nsender: Surojit D\ncontent: "
+  },
+  "output": {
+    "summary": "1. 21 Jun 2026 03:38 AM | surojitdutta1812@gmail.com | Surojit\n2. 22 Jun 2026 08:02 PM | Surojit D | \nCurrent message:\nsender: Surojit D\ncontent: Check 7"
+  }
+}

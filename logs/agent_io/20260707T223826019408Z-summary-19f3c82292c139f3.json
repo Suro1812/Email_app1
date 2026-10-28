@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f3c82292c139f3",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Approved <hello@getujobs.com>\nTo: surojitdutta1812@gmail.com\nDate: Tue, 07 Jul 2026 12:16:28 +0000\nSubject: <external_source>CreditSea - Your Approved Amount is Available Here</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 7 Jul 2026 12:16 PM\nsender: Approved\ncontent: <external_source>Hi there,![ ](http://images.v3cars.in/mails/UR/creaditsea54.png)</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 7 Jul 2026 12:16 PM\nsender: Approved\ncontent: <external_source>Hi there,![ ](http://images.v3cars.in/mails/UR/creaditsea54.png)</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Tue, 07 Jul 2026 12:16:28 +0000",
+        "sender": "Approved <hello@getujobs.com>",
+        "body": "<external_source>Hi there,![ ](http://images.v3cars.in/mails/UR/creaditsea54.png)</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From `Approved`, 7 Jul 2026 at 12:16 PM: The sender, representing CreditSea (via getujobs.com), notified the user that their approved amount is now available. A link to view or access this information was provided in the email body."
+  }
+}

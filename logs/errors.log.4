@@ -1,0 +1,826 @@
+2026-07-06 21:43:49,290 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1043, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:13:49.283057, 2026-07-06 16:13:49.283956, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1043, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:13:49.283057, 2026-07-06 16:13:49.283956, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 13, 49, 283057), 'updated_at': datetime.datetime(2026, 7, 6, 16, 13, 49, 283956)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:44:43,529 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1049, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:43.520623, 2026-07-06 16:14:43.521073, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1049, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:14:43.520623, 2026-07-06 16:14:43.521073, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 14, 43, 520623), 'updated_at': datetime.datetime(2026, 7, 6, 16, 14, 43, 521073)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:45:42,158 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1053, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:15:42.155348, 2026-07-06 16:15:42.155752, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1053, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:15:42.155348, 2026-07-06 16:15:42.155752, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 15, 42, 155348), 'updated_at': datetime.datetime(2026, 7, 6, 16, 15, 42, 155752)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:46:34,140 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1057, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:16:34.138605, 2026-07-06 16:16:34.138854, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1057, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:16:34.138605, 2026-07-06 16:16:34.138854, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 16, 34, 138605), 'updated_at': datetime.datetime(2026, 7, 6, 16, 16, 34, 138854)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:47:27,690 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1061, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:17:27.688389, 2026-07-06 16:17:27.688691, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1061, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:17:27.688389, 2026-07-06 16:17:27.688691, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 17, 27, 688389), 'updated_at': datetime.datetime(2026, 7, 6, 16, 17, 27, 688691)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:47:27,713 ERROR [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[de7a0ef7-9495-482e-9125-eab0f0dd6258] raised unexpected: IntegrityError('(psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint\nDETAIL:  Failing row contains (1061, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:17:27.688389, 2026-07-06 16:17:27.688691, f, null, null, null, null, null, f).\n')
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1061, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:17:27.688389, 2026-07-06 16:17:27.688691, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/trace.py", line 585, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/trace.py", line 858, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 95, in run_pipeline_for_message_ids_task
+    raise self.retry(exc=exc, countdown=60)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/task.py", line 769, in retry
+    raise_with_context(exc)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1061, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:17:27.688389, 2026-07-06 16:17:27.688691, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 17, 27, 688389), 'updated_at': datetime.datetime(2026, 7, 6, 16, 17, 27, 688691)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:48:23,088 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1065, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:18:23.086318, 2026-07-06 16:18:23.086544, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1065, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:18:23.086318, 2026-07-06 16:18:23.086544, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 18, 23, 86318), 'updated_at': datetime.datetime(2026, 7, 6, 16, 18, 23, 86544)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:49:24,269 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1069, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:19:24.267246, 2026-07-06 16:19:24.267598, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1069, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:19:24.267246, 2026-07-06 16:19:24.267598, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 19, 24, 267246), 'updated_at': datetime.datetime(2026, 7, 6, 16, 19, 24, 267598)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:49:24,292 ERROR [ForkPoolWorker-4] celery.app.trace: Task email_reminders.run_pipeline_for_message_ids[3b066cfc-d905-4b7f-beae-4fa767bf406a] raised unexpected: IntegrityError('(psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint\nDETAIL:  Failing row contains (1069, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:19:24.267246, 2026-07-06 16:19:24.267598, f, null, null, null, null, null, f).\n')
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1069, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:19:24.267246, 2026-07-06 16:19:24.267598, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/trace.py", line 585, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/trace.py", line 858, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 95, in run_pipeline_for_message_ids_task
+    raise self.retry(exc=exc, countdown=60)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/celery/app/task.py", line 769, in retry
+    raise_with_context(exc)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1069, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:19:24.267246, 2026-07-06 16:19:24.267598, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 19, 24, 267246), 'updated_at': datetime.datetime(2026, 7, 6, 16, 19, 24, 267598)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2026-07-06 21:50:27,527 ERROR [ForkPoolWorker-4] app.tasks: run_pipeline_for_message_ids_task_failed
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1073, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:20:27.524908, 2026-07-06 16:20:27.525206, f, null, null, null, null, null, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/tasks.py", line 85, in run_pipeline_for_message_ids_task
+    return asyncio.run(run_pipeline_for_message_ids(email, message_ids))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 346, in run_pipeline_for_message_ids
+    return await run_analyzer_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 170, in run_analyzer_pipeline_for_messages
+    return await run_pipeline_for_messages(user_email, messages)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 161, in run_pipeline_for_messages
+    persist_pipeline_results(user_email, results)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/agent/pipeline.py", line 76, in persist_pipeline_results
+    database.save_email_processing_result(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 320, in save_email_processing_result
+    return _save_with_user(user_email, message.get("id"), message, apply_result)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders_mobile/app/core/database.py", line 298, in _save_with_user
+    db.commit()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1316, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1290, in _prepare_impl
+    self.session.flush()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/itishadutta/Surojit_archive/GitHub/Email_reminders/.venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "priority" of relation "email_message_reminders" violates not-null constraint
+DETAIL:  Failing row contains (1073, 19f2d121ca5a14d0, <external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 road..., null, null, 2026-07-04, 17:49:47, null, null, 1, ET Markets <newsletter@economictimesnews.com>, surojitdutta1812@gmail.com, not_analyzed, null, null, null, null, null, pending, null, null, null, null, null, null, 2026-07-06 16:20:27.524908, 2026-07-06 16:20:27.525206, f, null, null, null, null, null, f).
+
+[SQL: INSERT INTO email_message_reminders (message_id, summarized_subject, summarized_body, message_date, message_time, reply_subject, reply_body, user_id, from_address, to_address, processing_status, skip_reason, detected_intent, action_items_json, deadline, reply_needed, reply_status, suggested_reply, llm_summary_tokens_input, llm_summary_tokens_output, llm_reply_tokens_input, llm_reply_tokens_output, prompt_cache_hit, calendar_event_detected, calendar_event_title, calendar_event_start_at, calendar_event_end_at, calendar_event_location, calendar_notification_at, calendar_notification_sent, created_at, updated_at) VALUES (%(message_id)s, %(summarized_subject)s, %(summarized_body)s, %(message_date)s, %(message_time)s, %(reply_subject)s, %(reply_body)s, %(user_id)s, %(from_address)s, %(to_address)s, %(processing_status)s, %(skip_reason)s, %(detected_intent)s, %(action_items_json)s, %(deadline)s, %(reply_needed)s, %(reply_status)s, %(suggested_reply)s, %(llm_summary_tokens_input)s, %(llm_summary_tokens_output)s, %(llm_reply_tokens_input)s, %(llm_reply_tokens_output)s, %(prompt_cache_hit)s, %(calendar_event_detected)s, %(calendar_event_title)s, %(calendar_event_start_at)s, %(calendar_event_end_at)s, %(calendar_event_location)s, %(calendar_notification_at)s, %(calendar_notification_sent)s, %(created_at)s, %(updated_at)s) RETURNING email_message_reminders.id]
+[parameters: {'message_id': '19f2d121ca5a14d0', 'summarized_subject': '<external_source>3 IPOs to hit next week | AMFI&#x27;s 2030 roadmap | Vedanta among 5 low PE stocks</external_source>', 'summarized_body': None, 'message_date': datetime.date(2026, 7, 4), 'message_time': datetime.time(17, 49, 47), 'reply_subject': None, 'reply_body': None, 'user_id': 1, 'from_address': 'ET Markets <newsletter@economictimesnews.com>', 'to_address': 'surojitdutta1812@gmail.com', 'processing_status': 'not_analyzed', 'skip_reason': None, 'detected_intent': None, 'action_items_json': None, 'deadline': None, 'reply_needed': None, 'reply_status': 'pending', 'suggested_reply': None, 'llm_summary_tokens_input': None, 'llm_summary_tokens_output': None, 'llm_reply_tokens_input': None, 'llm_reply_tokens_output': None, 'prompt_cache_hit': None, 'calendar_event_detected': False, 'calendar_event_title': None, 'calendar_event_start_at': None, 'calendar_event_end_at': None, 'calendar_event_location': None, 'calendar_notification_at': None, 'calendar_notification_sent': False, 'created_at': datetime.datetime(2026, 7, 6, 16, 20, 27, 524908), 'updated_at': datetime.datetime(2026, 7, 6, 16, 20, 27, 525206)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

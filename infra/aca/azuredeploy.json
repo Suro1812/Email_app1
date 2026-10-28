@@ -1,0 +1,248 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "version": {
+      "type": "string",
+      "metadata": {
+        "description": "Immutable application version. Used in APP_VERSION, tags, image tag, and ACA revision suffix."
+      }
+    },
+    "gitSha": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "imageRef": {
+      "type": "string",
+      "metadata": {
+        "description": "Fully qualified image reference, for example myregistry.azurecr.io/email-reminders:0.1.1."
+      }
+    },
+    "revisionSuffix": {
+      "type": "string",
+      "metadata": {
+        "description": "ACA revision suffix derived from the version."
+      }
+    },
+    "acrLoginServer": {
+      "type": "string"
+    },
+    "acrResourceId": {
+      "type": "string"
+    },
+    "managedIdentityName": {
+      "type": "string",
+      "defaultValue": "email-reminders-aca-pull"
+    },
+    "containerAppsEnvironmentName": {
+      "type": "string"
+    },
+    "apiAppName": {
+      "type": "string"
+    },
+    "workerAppName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "appEnv": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Non-secret environment variables as [{\"name\":\"DATABASE_URL\",\"value\":\"...\"}]. Prefer Key Vault or ACA secrets for production secrets."
+      }
+    },
+    "apiMinReplicas": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "apiMaxReplicas": {
+      "type": "int",
+      "defaultValue": 3
+    },
+    "workerMinReplicas": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "workerMaxReplicas": {
+      "type": "int",
+      "defaultValue": 3
+    },
+    "cpu": {
+      "type": "string",
+      "defaultValue": "0.5"
+    },
+    "memory": {
+      "type": "string",
+      "defaultValue": "1Gi"
+    }
+  },
+  "variables": {
+    "deployWorker": "[not(empty(parameters('workerAppName')))]",
+    "identityId": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('managedIdentityName'))]",
+    "acrPullRoleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]",
+    "acrPullRoleAssignmentName": "[guid(parameters('acrResourceId'), variables('identityId'), 'AcrPull')]",
+    "commonEnv": "[concat(createArray(createObject('name', 'APP_VERSION', 'value', parameters('version'))), parameters('appEnv'))]",
+    "tags": {
+      "app": "email-reminders",
+      "version": "[parameters('version')]",
+      "gitSha": "[parameters('gitSha')]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('containerAppsEnvironmentName')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-01-31",
+      "name": "[parameters('managedIdentityName')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]"
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "name": "[variables('acrPullRoleAssignmentName')]",
+      "scope": "[parameters('acrResourceId')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('managedIdentityName'))]"
+      ],
+      "properties": {
+        "roleDefinitionId": "[variables('acrPullRoleDefinitionId')]",
+        "principalId": "[reference(variables('identityId'), '2023-01-31').principalId]",
+        "principalType": "ServicePrincipal"
+      }
+    },
+    {
+      "type": "Microsoft.App/containerApps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('apiAppName')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[variables('identityId')]": {}
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppsEnvironmentName'))]",
+        "[extensionResourceId(parameters('acrResourceId'), 'Microsoft.Authorization/roleAssignments', variables('acrPullRoleAssignmentName'))]"
+      ],
+      "properties": {
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppsEnvironmentName'))]",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "ingress": {
+            "external": true,
+            "targetPort": 8000,
+            "transport": "auto",
+            "allowInsecure": false
+          },
+          "registries": [
+            {
+              "server": "[parameters('acrLoginServer')]",
+              "identity": "[variables('identityId')]"
+            }
+          ]
+        },
+        "template": {
+          "revisionSuffix": "[parameters('revisionSuffix')]",
+          "containers": [
+            {
+              "name": "api",
+              "image": "[parameters('imageRef')]",
+              "env": "[variables('commonEnv')]",
+              "resources": {
+                "cpu": "[json(parameters('cpu'))]",
+                "memory": "[parameters('memory')]"
+              }
+            }
+          ],
+          "scale": {
+            "minReplicas": "[parameters('apiMinReplicas')]",
+            "maxReplicas": "[parameters('apiMaxReplicas')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[variables('deployWorker')]",
+      "type": "Microsoft.App/containerApps",
+      "apiVersion": "2026-01-01",
+      "name": "[parameters('workerAppName')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[variables('identityId')]": {}
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppsEnvironmentName'))]",
+        "[extensionResourceId(parameters('acrResourceId'), 'Microsoft.Authorization/roleAssignments', variables('acrPullRoleAssignmentName'))]"
+      ],
+      "properties": {
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('containerAppsEnvironmentName'))]",
+        "configuration": {
+          "activeRevisionsMode": "Single",
+          "registries": [
+            {
+              "server": "[parameters('acrLoginServer')]",
+              "identity": "[variables('identityId')]"
+            }
+          ]
+        },
+        "template": {
+          "revisionSuffix": "[parameters('revisionSuffix')]",
+          "containers": [
+            {
+              "name": "worker",
+              "image": "[parameters('imageRef')]",
+              "command": [
+                "./scripts/start-worker.sh"
+              ],
+              "env": "[variables('commonEnv')]",
+              "resources": {
+                "cpu": "[json(parameters('cpu'))]",
+                "memory": "[parameters('memory')]"
+              }
+            }
+          ],
+          "scale": {
+            "minReplicas": "[parameters('workerMinReplicas')]",
+            "maxReplicas": "[parameters('workerMaxReplicas')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "version": {
+      "type": "string",
+      "value": "[parameters('version')]"
+    },
+    "image": {
+      "type": "string",
+      "value": "[parameters('imageRef')]"
+    },
+    "apiAppName": {
+      "type": "string",
+      "value": "[parameters('apiAppName')]"
+    },
+    "workerAppName": {
+      "type": "string",
+      "value": "[parameters('workerAppName')]"
+    }
+  }
+}

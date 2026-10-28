@@ -1,0 +1,19 @@
+{
+  "agent": "summary",
+  "message_id": "19f4c4728226c1cb",
+  "model": "qwen3.5:4b",
+  "input": {
+    "prompt": "From: Magicbricks <propmb@magicbricks.com>\nTo: surojitdutta1812@gmail.com\nDate: Fri, 10 Jul 2026 19:15:58 +0530 (IST)\nSubject: <external_source>Sudeshna has posted Builder Floors matching your budget</external_source>\nEMAIL_THREAD_START\nCurrent message:\ndatetime: 10 Jul 2026 07:15 PM\nsender: Magicbricks\ncontent: <external_source>Hi surojit,\nCheck these Builder Floors matching your requirements\nResidential Plot Rs. 8.0 Lac\nin Chitra , Asansol\nSuperArea 11\nContact Now View Details\nResidential Plot Rs. 15.0 Lac\nin Gopalpur , Asansol\nSuperArea 1,800 Sq-ft\nContact Now View Details\n1 BHK Flat Rs. 24.0 Lac\nUtsav Utsarg Housing in Santoshpur , Kolkata\nSuperArea 700 Sq-ft\nContact Now View Details\n3 BHK Builder Floor Rs. 38.0 Lac\nin Santoshpur , Kolkata\nSuperArea 1,200 Sq-ft\nContact Now View Details\nView All Matching Properties\nCopyright 2026\nMagicbricks Realty Services Ltd\nOpt Out</external_source>\nEMAIL_THREAD_END",
+    "thread_messages": "Current message:\ndatetime: 10 Jul 2026 07:15 PM\nsender: Magicbricks\ncontent: <external_source>Hi surojit,\nCheck these Builder Floors matching your requirements\nResidential Plot Rs. 8.0 Lac\nin Chitra , Asansol\nSuperArea 11\nContact Now View Details\nResidential Plot Rs. 15.0 Lac\nin Gopalpur , Asansol\nSuperArea 1,800 Sq-ft\nContact Now View Details\n1 BHK Flat Rs. 24.0 Lac\nUtsav Utsarg Housing in Santoshpur , Kolkata\nSuperArea 700 Sq-ft\nContact Now View Details\n3 BHK Builder Floor Rs. 38.0 Lac\nin Santoshpur , Kolkata\nSuperArea 1,200 Sq-ft\nContact Now View Details\nView All Matching Properties\nCopyright 2026\nMagicbricks Realty Services Ltd\nOpt Out</external_source>",
+    "raw_thread_messages": [
+      {
+        "datetime": "Fri, 10 Jul 2026 19:15:58 +0530 (IST)",
+        "sender": "Magicbricks <propmb@magicbricks.com>",
+        "body": "<external_source>Hi surojit,\nCheck these Builder Floors matching your requirements\nResidential Plot Rs. 8.0 Lac\nin Chitra , Asansol\nSuperArea 11\nContact Now View Details\nResidential Plot Rs. 15.0 Lac\nin Gopalpur , Asansol\nSuperArea 1,800 Sq-ft\nContact Now View Details\n1 BHK Flat Rs. 24.0 Lac\nUtsav Utsarg Housing in Santoshpur , Kolkata\nSuperArea 700 Sq-ft\nContact Now View Details\n3 BHK Builder Floor Rs. 38.0 Lac\nin Santoshpur , Kolkata\nSuperArea 1,200 Sq-ft\nContact Now View Details\nView All Matching Properties\nCopyright 2026\nMagicbricks Realty Services Ltd\nOpt Out</external_source>"
+      }
+    ]
+  },
+  "output": {
+    "summary": "Current message:\n- From Magicbricks (Fri, Jul 10, 2026 at 7:15 PM): Shared four residential property listings matching the user's requirements. The options include a Rs. 8.0 Lac plot in Chitra, Asansol; a Rs. 15.0 Lac super-area of 1,800 Sq-ft plot in Gopalpur, Asansol; a Rs. 24.0 Lac Utsav Utsarg Housing flat (700 Sq-ft) in Santoshpur, Kolkata; and a Rs. 38.0 Lac builder floor (1,200 Sq-ft) also in Santoshpur, Kolkata. Each listing includes links to \"Contact Now\" or \"View Details.\""
+  }
+}

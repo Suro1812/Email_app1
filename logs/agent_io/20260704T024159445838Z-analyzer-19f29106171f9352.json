@@ -1,0 +1,51 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19f29106171f9352"
+  ],
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-04T02:41:49\n\nMessage 1\nDate: Fri, 03 Jul 2026 17:39:26 +0000 (UTC)\nTo: surojitdutta1812@gmail.com\nFrom: Udemy <no-reply@e.udemymail.com>\nSubject: <external_source>Udemy Login: Here&#x27;s the 6-digit verification code you requested</external_source>\nMessage_body: <external_source>Hi Surojit, Use the code below to log in to your Udemy account. 521887This code expires in 15 minutes.Didn&#x27;t request this code? Contact us. ----------------------------- Delivered by Udemy 600 Harrison Street, 3rd Floor, San Francisco, CA 94107.</external_source>\nStructured_thread: Current message:\ndatetime: 3 Jul 2026 05:39 PM\nsender: Udemy\ncontent: <external_source>Hi Surojit, Use the code below to log in to your Udemy account. 521887This code expires in 15 minutes.Didn&#x27;t request this code? Contact us. ----------------------------- Delivered by Udemy 600 Harrison Street, 3rd Floor, San Francisco, CA 94107.</external_source>\n\nOutput instructions:\nReturn plain text only.\nFor each input message, output exactly one line in this exact format:\npriority=<low|normal|medium|high|urgent>; event_title=<none or title>; event_start=<none or YYYY-MM-DDTHH:MM:SS>; event_end=<none or YYYY-MM-DDTHH:MM:SS>; event_location=<none or location>\nUse event fields only for upcoming calendar-worthy meetings, calls, appointments, interviews, travel reservations, deadlines, or concrete reminders. Use none for every event field when there is no upcoming concrete event.\nExtract event date/time from the email subject/body/thread content, not from the Gmail received Date header. Use the received Date only to resolve relative phrases in the content, such as today, tomorrow, or 3 hours left.\nin the same order as the input messages.\nAllowed priority words: low, normal, medium, high, urgent.\nUse urgent only when the latest message explicitly asks the user to reply, respond, confirm, approve, or call back immediately/asap/right away. Do not use urgent for important-looking notifications without an immediate reply request.\nUse high when the latest message asks for a reply or action within a short stated window such as today, tomorrow, this week, within a few days, by a concrete date, or before a deadline.\nUse medium when the latest message asks for a meaningful reply or action but gives no clear short deadline.\nUse normal for ordinary useful information that does not ask the user to reply or act soon. Use low for bulk, automated, promotional, unsubscribe-style, or unlikely to require action.\nDo not return JSON, labels, Gmail metadata, reasoning, markdown, or tool calls.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19f29106171f9352",
+        "thread_id": "19f29106171f9352",
+        "from": "Udemy <no-reply@e.udemymail.com>",
+        "to": "surojitdutta1812@gmail.com",
+        "subject": "<external_source>Udemy Login: Here&#x27;s the 6-digit verification code you requested</external_source>",
+        "date": "Fri, 03 Jul 2026 17:39:26 +0000 (UTC)",
+        "snippet": "<external_source>Hi Surojit, Use the code below to log in to your Udemy account. 521887 This code expires in 15 minutes. Didn&#x27;t request this code? Contact us. Delivered by Udemy 600 Harrison Street, 3rd Floor, San</external_source>",
+        "body": "<external_source>Hi Surojit, Use the code below to log in to your Udemy account. 521887This code expires in 15 minutes.Didn&#x27;t request this code? Contact us. ----------------------------- Delivered by Udemy 600 Harrison Street, 3rd Floor, San Francisco, CA 94107.</external_source>",
+        "thread_messages": [],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 37,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n\n<html lang=\"en-us\">\n<head>\n\n\n<title>Udemy</title>\n<style>\r\n            #udemy-email img {\r\n                max-width:100%;\r\n                height:auto;\r\n            }\r\n\r\n            #udemy-email p {\r\n                color:#1C1D1F;\r\n                margin:0 0 8px 0;\r\n            }\r\n\r\n            \r\n            #udemy-email a {\r\n                color:#5624D0;\r\n                text-decoration:underline;\r\n            }\r\n\r\n            #udemy-email ul,\r\n            #udemy-email ol {\r\n                margin:0 24px 8px 24px;\r\n                padding:0;\r\n            }\r\n\r\n            #udemy-email li {\r\n                margin:0 0 4px 0;\r\n                padding:0 8px;\r\n            }\r\n\r\n            #udemy-email hr {\r\n                border:0;\r\n                border-top:1px solid #CCCCCC;\r\n                margin:16px 0;\r\n            }\r\n\r\n            \r\n        </style>\n</head>\n<body style=\"color:#1C1D1F; margin:0; font-family:'SF Pro Text', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size:16px; font-weight:400; line-height:1.4;\">\n<table cellpadding=\"0\" cellspacing=\"0\" id=\"udemy-email\" style=\"background-color:#F7F9FA; padding:24px\" width=\"100%\">\n<tr>\n<td> </td>\n<td width=\"600\">\n<table cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#FFF\" width=\"100%\">\n<tr>\n<td style=\"border-bottom:1px solid #CCCCCC;padding:24px\">\n<img alt=\"Udemy\" src=\"https://s.udemycdn.com/email/logo-udemy-v3.png\" style=\"display:block; max-height:28px; width:auto\" width=\"75\"/>\n</td>\n</tr>\n<tr>\n<td style=\"padding:24px 24px 0 24px\">\n<p><a style=\"text-decoration:none; color:#1C1D1F\">\r\n                                            \r\n                                                \r\n                                                    Hi Surojit,\r\n                                                \r\n                                            \r\n                                        </a></p>\n<p>\n<a style=\"text-decoration:none; color:#1C1D1F\"><p><a style=\"text-decoration:none; color:#1C1D1F\">Use the code below to log in to your Udemy account.</a></p></a>\n</p>\n<p style=\"margin-bottom:0\">\n<a style=\"text-decoration:none; color:#1C1D1F\"><h1 style=\"background-color: #d3d3d352;text-align: center;\"><a style=\"text-decoration:none; color:#1C1D1F\">521887</a></h1></a><a style=\"text-decoration:none; color:#1C1D1F\"><p><a style=\"text-decoration:none; color:#1C1D1F\">This code expires in 15 minutes.</a></p></a><a style=\"text-decoration:none; color:#1C1D1F\"><p><a style=\"text-decoration:none; color:#1C1D1F\">Didn't request this code? </a><a href=\"https://e2.udemymail.com/ls/click?upn=u001.9GWSZeWdmdf6rKBC5BsLZ2XRgp4nWQUKH3JsjxFFsFm-2BZGzCMtARE-2FiYcAPFg7oXZ6knLVqxGn9xh09PzOooqPX87xrQUCW8lESlsMOh6GqcsVCYWSCMVe-2BOLxzTGaiRcdUr_O2nPooZYOE91HDuNiR1kpc1hiX-2BASLzlhSplb5TZbF8grWvUxYsrU2lyIyInBr3ovlXZFpX7kGl9NwnPnIYVpppUvKM8LiZ7HbynoL5lQx0B1pCIAtFT-2FBdK2FxcL-2FfpMcJqGwxOJFe2sDLcfXdamSUsy5JBU0WSrIpbmQpbK4CXbwxjHVDrBKDj3QFG47XOcDufSPeLc09-2FPo73IcBCXz5JJET-2BaRVMh9VR2er83WD3ygD7wvBlS0pFnoUGZteXlyC54Oj61uKZAJFkREsUbH9PWqZbV2Fx-2Fgubb2RiPN9BdUhVibq7s83BMPQebLJdye-2B0z4cPyj8RlpNsKGuC45djzslXxBOJcVQ2nxi-2Fne4-3D\" rel=\"noopener noreferrer nofollow\" target=\"_blank\">Contact us</a><a style=\"text-decoration:none; color:#1C1D1F\">.</a></p></a>\n</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding:48px 24px 0 24px\">\n<p style=\"font-family:'SF Pro Text', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size:12px; font-weight:400; line-height:1.4; color:#6A6F73; margin:0\">\r\n                                    \r\n                                        Delivered by Udemy 600 Harrison Street, 3rd Floor, San Francisco, CA 94107.\r\n                                    \r\n                                    \r\n                                        \r\n                                    \r\n                                    \r\n                                        \r\n                                    \r\n                                </p>\n</td>\n</tr>\n<tr>\n<td style=\"padding:24px 0 0 0\"></td>\n</tr>\n</table>\n</td>\n<td> </td>\n</tr>\n</table>\n<img alt=\"\" border=\"0\" height=\"1\" src=\"https://e2.udemymail.com/wf/open?upn=u001.sfkjBbon7Yvtz6QmhrRR5U2zGxW-2F-2Bss8C6sYM6eZiGa0Qn0FUDlR9SK7qqc2fm1FMdlsziEtO-2B5MlOeo7smqtvnnPAdDSUtJ2HAL-2BeW-2B1elgd0bFSVEd12XcnCBy0wdt8gCImXZsXLu513fNKTd0P2W2dYvtcnDTTlauMtTCCBAUW9jD8wwnoHNsF0ZkXvRmW6keed7nm0XJ4HAPWImZHxSLtISryLdFH45kWjgqnnmhOiOqsap4lWv9NnN2OhTWmpWP1fweL-2BbitoqsXYmrJQNvW-2FqxG1i7JbKSplqZY-2BI2tWQnErkxFUh5gJiKh0bX0VG57p3YwBoz0bmp-2B2H-2BJ926reKWtNo-2FHA0XOkI4-2FW-2FivLXnVPbtDY2W2eFIwglX\" style=\"height:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;\" width=\"1\"/></body>\n</html>",
+        "display_text": "Hi Surojit,\r\n\r\nUse the code below to log in to your Udemy account.\r\n\r\n521887This code expires in 15 minutes.Didn't request this code? Contact us.\r\n\r\n-----------------------------\r\nDelivered by Udemy 600 Harrison Street, 3rd Floor, San Francisco, CA 94107.",
+        "has_display_html": true
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "priority=normal; event_title=<none>; event_start=<none>; event_end=<none>; event_location=<none>",
+    "parsed": {
+      "messages": [
+        {
+          "priority": "medium"
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "priority": "medium"
+        }
+      ]
+    }
+  }
+}

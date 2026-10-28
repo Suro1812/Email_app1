@@ -1,0 +1,189 @@
+{
+  "agent": "analyzer",
+  "message_ids": [
+    "19f56c5e1ae289f9"
+  ],
+  "model": "qwen3.5:9b-q8_0",
+  "input": {
+    "prompt": "Analyze the following Gmail message context. Current datetime: 2026-07-13T02:33:18\n\nMessage 1\nDate: Sun, 12 Jul 2026 20:10:36 +0530\nTo: SUROJITDUTTA1812@gmail.com\nFrom: HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>\nSubject: <external_source>❗ You have done a UPI txn. Check details!</external_source>\nExtracted_date_time_expressions: [\"12-07-26\"]\nMessage_body: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.301.00 is debited from your account ending 2861 towards VPA swiggyupi@axb (Swiggy Ltd) on 12-07-26.\nUPI transaction reference no.: 195327201567.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\nStructured_thread: Current message:\ndatetime: 12 Jul 2026 08:10 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.301.00 is debited from your account ending 2861 towards VPA swiggyupi@axb (Swiggy Ltd) on 12-07-26.\nUPI transaction reference no.: 195327201567.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 1:\ndatetime: 12 Jul 2026 06:37 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.80.00 is debited from your account ending 2861 towards VPA paytmqr6gq5qg@ptys (SEEMALA PRATHIBHA) on 12-07-26.\nUPI transaction reference no.: 126180898770.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 2:\ndatetime: 12 Jul 2026 06:36 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.95.00 is debited from your account ending 2861 towards VPA q451664504@ybl (MRS SHEFALI SHEFALI) on 12-07-26.\nUPI transaction reference no.: 126180808142.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 3:\ndatetime: 12 Jul 2026 05:25 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.238.00 is debited from your account ending 2861 towards VPA amzn-dkfvsefecxr@rapl (KANTI SWEETS PRIVATE LIMITED) on 12-07-26.\nUPI transaction reference no.: 126176247435.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 4:\ndatetime: 12 Jul 2026 04:32 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.30.00 is debited from your account ending 2861 towards VPA 73100505826kagb@cnrb (PREMA) on 12-07-26.\nUPI transaction reference no.: 126173512993.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 5:\ndatetime: 12 Jul 2026 04:27 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.14.00 is debited from your account ending 2861 towards VPA paytm.s26jq2w@pty (Reji V K) on 12-07-26.\nUPI transaction reference no.: 126173265480.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 6:\ndatetime: 12 Jul 2026 02:34 PM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.509.00 is debited from your account ending 2861 towards VPA paytm-blinkit@ptybl (Blinkit) on 12-07-26.\nUPI transaction reference no.: 126168332327.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 7:\ndatetime: 12 Jul 2026 06:59 AM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.389.00 is debited from your account ending 2861 towards VPA blinkit1.paytm@hdfcbank (BLINKIT) on 12-07-26.\nUPI transaction reference no.: 126161957285.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 8:\ndatetime: 12 Jul 2026 11:12 AM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.1129.00 is debited from your account ending 2861 towards VPA fcpgaxisbankbsfi@freecharge (AXIS BANK LIMITED) on 12-07-26.\nUPI transaction reference no.: 126157416788.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nPrevious message 9:\ndatetime: 12 Jul 2026 10:19 AM\nsender: HDFC Bank InstaAlerts\ncontent: <external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.2925.00 is debited from your account ending 2861 towards VPA paytmqr6jzm3s@ptys (FISH WORLD) on 12-07-26.\nUPI transaction reference no.: 126154442880.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>\n\nOutput instructions:\nReturn JSON only. Do not include markdown, reasoning, labels, or tool calls.\nReturn one object with a messages array, in the same order as the input messages.\nEach item in messages must follow this schema exactly:\n{\n  \"category\": \"calendar_event | reminder | none\",\n  \"event_type\": \"meeting | appointment | interview | travel | reservation | webinar | deadline | task_reminder | follow_up | payment | renewal | other | none\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"start_date\": \"\",\n  \"start_time\": null,\n  \"end_date\": null,\n  \"end_time\": null,\n  \"location\": null,\n  \"participants\": [],\n  \"meeting_platform\": null,\n  \"requires_confirmation\": false,\n  \"confidence\": 0.0,\n  \"reason\": \"\"\n}\n\nYou are an Event and Reminder Analyzer.\n\nYour job is to determine whether an email contains an actionable item for the email recipient.\n\nThe input email has already passed a rule-based filter and contains one or more detected date/time expressions.\n\nThe detected expressions are provided in Extracted_date_time_expressions for each message.\n\nYour responsibilities are:\n\n1. Identify which extracted date(s) and time(s) actually belong to an actionable item.\n\nIgnore dates that refer to:\n- historical events\n- payment history\n- publication dates\n- previous meetings\n- examples\n- unrelated future dates\n- expiry dates unless they require user action\n\n2. Classify the actionable item.\n\nChoose exactly one category.\n\nAlso choose exactly one event_type from: meeting, appointment, interview, travel, reservation, webinar, deadline, task_reminder, follow_up, payment, renewal, other, none.\n\nUse event_type none only when category is none. For reminders, use the most specific reminder type, such as deadline, payment, renewal, follow_up, or task_reminder. For calendar events, use the most specific attendance type, such as meeting, interview, appointment, travel, reservation, or webinar.\n\nA. CALENDAR_EVENT\n\nChoose this if the user is expected to attend something at a specific date/time.\n\nIf the email asks to plan, schedule, attend, join, or arrange a meeting/event on a date but the time is missing, still choose calendar_event and set requires_confirmation to true.\n\nUse date-only meeting or planning asks as planned event reminders. They should appear on the calendar date but must not be treated as confirmed timed calendar blocks.\n\nOnly messages with a concrete invite, .ics/calendar details, or explicit date and time should become confirmed timed calendar events.\n\nExamples:\n- Meeting\n- Interview\n- Doctor appointment\n- Conference\n- Webinar\n- Flight\n- Hotel check-in\n- Restaurant reservation\n- Official calendar invitation\n- Zoom/Google Meet/Teams meeting\n- Physical meeting\n\nB. REMINDER\n\nChoose this if the user must remember to perform an action but there is no scheduled event requiring attendance.\n\nBecause the message already contains a detected date/time expression, choose reminder for date/time-related items that may require user attention and are not calendar events.\n\nExamples:\n- Pay invoice\n- Submit report\n- Renew insurance\n- Complete assignment\n- Send documents\n- Follow up\n- Call customer\n- Buy groceries\n\nC. NONE\n\nChoose NONE if no actionable reminder or event exists.\n\nKeep NONE for historical dates, payment history, FYI/news/general announcements, and dates that do not require future user attention.\n\nExamples:\n- News\n- Advertisements\n- FYI emails\n- Historical references\n- General announcements\n\n3. If multiple dates exist:\n\nDetermine which date belongs to the actionable item.\n\nIgnore dates that merely describe:\n- unavailable dates\n- previous events\n- alternative examples\n- historical references\n\n4. Determine whether user confirmation is required.\n\nConfirmation should be true when:\n- date missing\n- time missing\n- multiple possible dates\n- ambiguous wording\n- confidence is low\n\n5. Never invent missing information.\n\nIf time is missing, set start_time to null.\nIf end time is unknown, set end_time to null.\nIf location is unknown, set location to null.\nUse lowercase category values only: calendar_event, reminder, none.\nUse ISO date format YYYY-MM-DD and 24-hour time format HH:MM:SS when known.\nFor reminders, extract the exact due date and due time when present so code can create a reminder event on the calendar; if only a date is present, set start_time to null.\nUse the email received Date only to resolve relative phrases in the content, such as today, tomorrow, or 3 hours left.\nDo not draft a reply.",
+    "messages": [
+      {
+        "id": "19f56c5e1ae289f9",
+        "thread_id": "19f54a907e677090",
+        "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+        "to": "SUROJITDUTTA1812@gmail.com",
+        "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+        "date": "Sun, 12 Jul 2026 20:10:36 +0530",
+        "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.301.00 is debited from your account ending 2861 towards VPA swiggyupi@axb (Swiggy Ltd) on 12-07-26. UPI transaction reference no.: 195327201567. If you did</external_source>",
+        "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.301.00 is debited from your account ending 2861 towards VPA swiggyupi@axb (Swiggy Ltd) on 12-07-26.\nUPI transaction reference no.: 195327201567.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+        "thread_messages": [
+          {
+            "id": "19f54a907e677090",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 10:19:50 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.2925.00 is debited from your account ending 2861 towards VPA paytmqr6jzm3s@ptys (FISH WORLD) on 12-07-26. UPI transaction reference no.: 126154442880. If you</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.2925.00 is debited from your account ending 2861 towards VPA paytmqr6jzm3s@ptys (FISH WORLD) on 12-07-26.\nUPI transaction reference no.: 126154442880.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f54d8e67dea33d",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 11:12:08 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.1129.00 is debited from your account ending 2861 towards VPA fcpgaxisbankbsfi@freecharge (AXIS BANK LIMITED) on 12-07-26. UPI transaction reference no.:</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.1129.00 is debited from your account ending 2861 towards VPA fcpgaxisbankbsfi@freecharge (AXIS BANK LIMITED) on 12-07-26.\nUPI transaction reference no.: 126157416788.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f551fb3b27c6eb",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 06:59:27 +0000",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.389.00 is debited from your account ending 2861 towards VPA blinkit1.paytm@hdfcbank (BLINKIT) on 12-07-26. UPI transaction reference no.: 126161957285. If</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.389.00 is debited from your account ending 2861 towards VPA blinkit1.paytm@hdfcbank (BLINKIT) on 12-07-26.\nUPI transaction reference no.: 126161957285.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f559251fa1a056",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 14:34:39 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.509.00 is debited from your account ending 2861 towards VPA paytm-blinkit@ptybl (Blinkit) on 12-07-26. UPI transaction reference no.: 126168332327. If you</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.509.00 is debited from your account ending 2861 towards VPA paytm-blinkit@ptybl (Blinkit) on 12-07-26.\nUPI transaction reference no.: 126168332327.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f55f939927532b",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 16:27:03 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.14.00 is debited from your account ending 2861 towards VPA paytm.s26jq2w@pty (Reji VK) on 12-07-26. UPI transaction reference no.: 126173265480. If you did</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.14.00 is debited from your account ending 2861 towards VPA paytm.s26jq2w@pty (Reji V K) on 12-07-26.\nUPI transaction reference no.: 126173265480.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f55fdf62bde71c",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 16:32:14 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.30.00 is debited from your account ending 2861 towards VPA 73100505826kagb@cnrb (PREMA) on 12-07-26. UPI transaction reference no.: 126173512993. If you did</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.30.00 is debited from your account ending 2861 towards VPA 73100505826kagb@cnrb (PREMA) on 12-07-26.\nUPI transaction reference no.: 126173512993.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f562f0e2fa64c0",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 17:25:51 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.238.00 is debited from your account ending 2861 towards VPA amzn-dkfvsefecxr@rapl (KANTI SWEETS PRIVATE LIMITED) on 12-07-26. UPI transaction reference no.:</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.238.00 is debited from your account ending 2861 towards VPA amzn-dkfvsefecxr@rapl (KANTI SWEETS PRIVATE LIMITED) on 12-07-26.\nUPI transaction reference no.: 126176247435.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f566f7eac66ba7",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 18:36:14 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.95.00 is debited from your account ending 2861 towards VPA q451664504@ybl (MRS SHEFALI SHEFALI) on 12-07-26. UPI transaction reference no.: 126180808142. If</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.95.00 is debited from your account ending 2861 towards VPA q451664504@ybl (MRS SHEFALI SHEFALI) on 12-07-26.\nUPI transaction reference no.: 126180808142.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          },
+          {
+            "id": "19f5670ad55a14a8",
+            "thread_id": "19f54a907e677090",
+            "from": "HDFC Bank InstaAlerts <alerts@hdfcbank.bank.in>",
+            "to": "SUROJITDUTTA1812@gmail.com",
+            "subject": "<external_source>❗ You have done a UPI txn. Check details!</external_source>",
+            "date": "Sun, 12 Jul 2026 18:37:31 +0530",
+            "snippet": "<external_source>Dear Customer, Greetings from HDFC Bank! Rs.80.00 is debited from your account ending 2861 towards VPA paytmqr6gq5qg@ptys (SEEMALA PRATHIBHA) on 12-07-26. UPI transaction reference no.: 126180898770.</external_source>",
+            "body": "<external_source>HDFC BANK\nDear Customer,\nGreetings from HDFC Bank!\nRs.80.00 is debited from your account ending 2861 towards VPA paytmqr6gq5qg@ptys (SEEMALA PRATHIBHA) on 12-07-26.\nUPI transaction reference no.: 126180898770.\nIf you did not authorize this transaction, please report it immediately at:\na. When in India (Toll free): 1800 258 6161\nb. When abroad: 9122 61606160\nc. Or SMS &#x27;BLOCK UPI&#x27; to 7308080808.\nWe&#x27;re here to support you in every step of the way.\nWarm regards,\nHDFC Bank\nFor more details on Service charges and Fees, click here.\n© HDFC Bank</external_source>",
+            "sanitized": true,
+            "prompt_injection_detected": false
+          }
+        ],
+        "promotional_check": {
+          "has_list_unsubscribe_header": false,
+          "has_html_code": true,
+          "plain_text_word_count": 89,
+          "skip_llm": false
+        },
+        "sanitized": true,
+        "prompt_injection_detected": false,
+        "display_html": "<!DOCTYPE html>\n\n<html>\n<head>\n\n\n\n\n\n\n<title>HDFC BANK</title><!-- Facebook sharing information tags -->\n<!--<meta property=\"og:title\" content=\"HDFC BANK\" />-->\n<style type=\"text/css\">\r\n        @media screen and (min-device-width: 320px) and (max-device-width: 768px) {\r\n            table {\r\n                width: 100%;\r\n            }\r\n\r\n            .td {\r\n                padding: 0px 25px;\r\n                text-align: left;\r\n            }\r\n\r\n            .heading {\r\n                text-align: center;\r\n                padding: 0px 25px;\r\n            }\r\n\r\n            .cta {\r\n                padding: 0px 25px;\r\n                text-align: center;\r\n            }\r\n        }\r\n    </style>\n</head>\n<body data-new-gr-c-s-loaded=\"14.1101.0\">\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\">\n<tbody>\n<tr>\n<td style=\"border-bottom:1px solid #cccccc; border-top:1px solid #cccccc; border-left:1px solid #cccccc;border-right:1px solid #cccccc;\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tbody>\n<tr>\n<td bgcolor=\"#dcddde\" style=\"line-height:0px;background-color:#dcddde; border-left:1px solid #dcddde;\" valign=\"top\"><a href=\"https://trkt.aclemails.com/v1/r/%2BhhAT3fGEQhapzUcNHnHy8nLiGIOd%2F6uP%2BPHwhCy2ayXII1CH7lOIn5ioXsFHEWqhcXYEyH6K36J31GV%2FgtD9sX%2BW1%2F7lWVkk9Qmj7XCEs%2Bm%2FV8XAKX7%2B2j4V4Za6Jn9WwnO5tDTiAhBHdJEbGTaNNsy%2F3DXs1Dq7ycNvpt6VLH%2Bqnn7wSH2Ba9KbfiKL%2FipGc4Won0KGEgU6pITJgnxYM2TuyMNAS20zHP7EkOGDlCKMW6Stw8fHEf%2B8zu34TSPdKUfAlqsNnDb4YpVyAwZnuDu1mWt8DElsFnu2lcSS1RUjBFbl2YUy54Iep63fIYOsqov0sjuu8NTQQzHxo0%3D\" rel=\"noopener noreferrer nofollow\" target=\"_blank\"><img alt=\"\" border=\"0\" src=\"https://img.pinchappmails.com/hdfc/images/2026/july/HDFC-Bank-Banner-Update-2026-07-06.jpg\" style=\"display: block; vertical-align: top\" width=\"100%\"/></a></td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td height=\"20\"></td>\n</tr>\n<tr>\n<td bgcolor=\"#dcddde\" style=\"line-height:0px;background-color:#dcddde; border-left:1px solid #dcddde;\" valign=\"top\"><img alt=\"\" border=\"0\" src=\"https://wgjpss.stripocdn.email/content/guids/CABINET_d17330eb5cbe5af68cf444e0d9b181ad116d88b22fb8b3fd1c93e1846c59af76/images/nmbandnew.jpg\" width=\"100%\"/></td>\n</tr>\n<tr>\n<td>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tbody>\n<tr>\n<td align=\"center\" valign=\"top\">\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"550\">\n<tbody>\n<tr>\n<td align=\"center\" valign=\"top\" width=\"550\">\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100% !important; text-align: center\" width=\"100%\">\n<tbody>\n<tr>\n<td height=\"15\"></td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tbody>\n<tr>\n<td align=\"center\" valign=\"top\">\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"550\">\n<tbody>\n<tr>\n<td align=\"center\" valign=\"top\" width=\"550\">\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100% !important; text-align: center\" width=\"100%\">\n<tbody>\n<tr>\n<td height=\"\"></td>\n</tr>\n<tr>\n<td align=\"left\" class=\"td esd-text\" style=\"font-family:Arial; font-size:16px; line-height:22px; color:#000; font-weight: normal; text-align: left\" valign=\"middle\">Dear Customer,<br/><br/>Greetings from HDFC Bank!<br/><br/>Rs.301.00 is debited from your account ending 2861 towards VPA swiggyupi@axb (Swiggy Ltd) on 12-07-26.<br/><br/>UPI transaction reference no.: 195327201567.<br/><br/>If you did not authorize this transaction, please report it immediately at: <br/>a. When in India (Toll free): 1800 258 6161 <br/>b. When abroad:  9122 61606160 <br/>c. Or SMS 'BLOCK UPI' to 7308080808.<br/><br/>We're here to support you in every step of the way.<br/><br/>Warm regards,<br/>HDFC Bank\r\n\r\n</td>\n</tr>\n<tr>\n<td height=\"25\"></td>\n</tr>\n<tr>\n<td align=\"left\" class=\"td esd-text\" style=\"font-family:Arial; font-size:16px; line-height:22px; color:#000; font-weight: normal; text-align: left\" valign=\"middle\">\n</td>\n</tr>\n<tr>\n<td height=\"25\"></td>\n</tr>\n<tr>\n<td align=\"left\" class=\"td esd-text\" style=\"font-family:Arial; font-size:16px; line-height:22px; color:#000; font-weight: normal; text-align: left; border-bottom: 2px solid #cccccc; padding-bottom: 0px\" valign=\"middle\">\n</td>\n</tr>\n<tr>\n<td height=\"15\"></td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"line-height:0px; border-left:0px solid #dcddde; padding-bottom: 5px\" valign=\"top\"><img alt=\"\" border=\"0\" src=\"https://img.pinchappmails.com/hdfc/images/2025/dec/Digital-Arrest-Scam_Insta-Alert-Banner_600-x-60_Sep%2725+(1)+(1).jpg\" width=\"100%\"/></td>\n</tr>\n<tr>\n<td align=\"left\" class=\"esd-text\" style=\"font-family:Arial,Helvetica,sans-serif;color:#000000;padding-bottom:5px;padding-top:5px;text-align:left;font-size:12px;border:none;line-height:12px;padding-left:15px;padding-right:15px\">For more details on Service charges and Fees, <a href=\"https://trkt.aclemails.com/v1/r/Y1cww2GoNG%2F%2BfzWspcEZRfcUshFMea6EineSc%2FMQsC5E%2B1QzfPCAIsHTm%2BueRY%2BU7Rh42ILAqpz%2B0zIB322XQGcygMzolpMhRl4VM0IVRIpcOlGMMBxQ1aA8neT2C%2FYsRJv1GP%2Bzb9xsv%2Fmoe4MjueWI9GuT02awkJ%2FDLcVpTLdgUh8qK5OgFxBm%2B6RSnvPpwgkqgV6BSwwDFzLb01cYE0ppgWTrOCjOUrinvzyfddlVBAi9HhR9hPYNBxPQWcLVEQ5NtOk7aKHlBMzbRXeZX0TKUWgAhLcA%2BD%2FW1V%2BP39zfriSFsPXFLGLK%2B3kS80HP%2Fbk%3D\" rel=\"noopener noreferrer nofollow\" style=\"text-decoration:underline;color:#004b8d;outline:none\" target=\"_blank\"><strong> click here.</strong></a></td>\n</tr>\n<tr>\n<td align=\"left\" class=\"esd-text\" style=\"font-family:Arial,Helvetica,sans-serif;color:#000000;text-align:left;font-size:12px;border:none;padding-left:15px\" width=\"30%\">© HDFC Bank <span style=\"font-size: 3px\"></span></td>\n</tr>\n</tbody>\n</table>\n</body>\n</html><img border=\"0\" height=\"1\" src=\"https://trkt.aclemails.com/v1/w/YOcbQBgqgP3sN%2Bh5Y%2B8ycKpUBgVrqGm%2BM3%2FAK4x%2FsKi9%2B7To1ImrUinz6Wg05Z3yCcavv15mf2bFMYLhXVvuwWZ97pN2Vp%2BW%2F5plIYsyN0%2FJ08NPyeOlHCuoGoWI4TwXne9vsPu%2BasqXrq%2BbbvffzwR3XyD2WFEG4kxQzBkX3W1Ktl6IAkfsV8JKj7cIfvT%2B6OgWziaPx0LIaTFttFmLTyXrQ4yALrj3niTxjuM%2B\" width=\"1\"/>",
+        "display_text": "",
+        "has_display_html": true,
+        "extracted_date_time_expressions": [
+          "12-07-26"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "raw_text": "{\n  \"category\": \"none\",\n  \"event_type\": \"none\",\n  \"title\": \"\",\n  \"description\": \"\",\n  \"start_date\": \"\",\n  \"start_time\": null,\n  \"end_date\": null,\n  \"end_time\": null,\n  \"location\": null,\n  \"participants\": [],\n  \"meeting_platform\": null,\n  \"requires_confirmation\": false,\n  \"confidence\": 1.0,\n  \"reason\": \"The email is a transaction alert indicating that Rs.509 was debited from the account for a Blinkit order on 12-07-26. This describes past payment history and does not contain any future date requiring user action (like an upcoming bill due date) or an event to attend.\"\n}",
+    "parsed": {
+      "messages": [
+        {
+          "category": "none",
+          "event_type": "none",
+          "title": "",
+          "description": "",
+          "start_date": "",
+          "start_time": null,
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": false,
+          "confidence": 1.0,
+          "reason": "The email is a transaction alert indicating that Rs.509 was debited from the account for a Blinkit order on 12-07-26. This describes past payment history and does not contain any future date requiring user action (like an upcoming bill due date) or an event to attend."
+        }
+      ]
+    },
+    "validated": {
+      "messages": [
+        {
+          "category": "none",
+          "event_type": "none",
+          "title": "",
+          "description": "",
+          "start_date": "",
+          "start_time": null,
+          "end_date": null,
+          "end_time": null,
+          "location": null,
+          "participants": [],
+          "meeting_platform": null,
+          "requires_confirmation": false,
+          "confidence": 1.0,
+          "reason": "The email is a transaction alert indicating that Rs.509 was debited from the account for a Blinkit order on 12-07-26. This describes past payment history and does not contain any future date requiring user action (like an upcoming bill due date) or an event to attend."
+        }
+      ]
+    }
+  }
+}
